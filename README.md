@@ -1,0 +1,2 @@
+# STRAVA
+ISAD proiekturako repositorioa.
