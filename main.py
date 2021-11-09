@@ -1,4 +1,5 @@
 from controllers.StravaAPI import stravaApiKud
+%kaixo
 
 
 if __name__ == '__main__':
