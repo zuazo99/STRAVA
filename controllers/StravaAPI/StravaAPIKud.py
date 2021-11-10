@@ -112,6 +112,7 @@ class StravaAPIKud:
         return self.http.request('GET', self.host + "/athlete/" + id, par, goiburuak)
 
     @tojson
+    # Ns si ta weno?
     def getActivityStreams(self, id=None, keys=None, key_by_type=None, goiburuak={}):
         par = {}
         if id is not None:
