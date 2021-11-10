@@ -51,7 +51,8 @@ class StravaAPIKud:
             else:
                 print("refresh_token")
                 parametroak["grant_type"] = "refresh_token"
-                parametroak["refresh_token"] = self.stravaConfig.get("refresh_token")
+                parametroak["refresh_token"] = self.stravaConfig.get(
+                    "refresh_token")
 
             url = "https://www.strava.com/oauth/token"
             resp = self.http.request('POST', url, fields=parametroak)
@@ -60,8 +61,10 @@ class StravaAPIKud:
                 del self.stravaConfig['code']
                 self.getAccessToTheAPI()
                 return
-            self.setConfigurationProperty("access_token", result["access_token"])
-            self.setConfigurationProperty("refresh_token", result["refresh_token"])
+            self.setConfigurationProperty(
+                "access_token", result["access_token"])
+            self.setConfigurationProperty(
+                "refresh_token", result["refresh_token"])
             self.setConfigurationProperty("expires_at", result["expires_at"])
             self.setConfigurationProperty("token_type", result["token_type"])
 
@@ -83,3 +86,39 @@ class StravaAPIKud:
     @tojson
     def getAthlete(self, goiburuak={}):
         return self.http.request('GET', self.host + "/athlete", None, goiburuak)
+
+    @tojson
+    def getAthleteActivities(self, before=None, after=None, page=None, per_page=None, goiburuak={}):
+        par = {}
+        if before is not None:
+            par['before'] = before
+        if after is not None:
+            par['after'] = after
+        if page is not None:
+            par['page'] = page
+        if per_page is not None:
+            par['per_page'] = per_page
+        return self.http.request('GET', self.host + "/athlete/activities", par, goiburuak)
+
+    @tojson
+    # Ns si está bien del todo, osea si hay q poner incl en los paramtros e ifearlo?
+    def getActivietesById(self, id=None, include_all_efforts=None, goiburuak={}):
+        par = {}
+        if id is not None:
+            par['id'] = id
+        if before is not None:
+            par['include_all_efforts'] = include_all_efforts
+        # Dk if good
+        return self.http.request('GET', self.host + "/athlete/" + id, par, goiburuak)
+
+    @tojson
+    def getActivityStreams(self, id=None, keys=None, key_by_type=None, goiburuak={}):
+        par = {}
+        if id is not None:
+            par['id'] = id
+        if keys is not None:
+            par['keys'] = keys
+        if key_by_type is not None:
+            par['key_by_type'] = key_by_type
+        # Dk if good
+        return self.http.request('GET', self.host + "/athlete/" + id, par, goiburuak)
