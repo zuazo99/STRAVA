@@ -1,4 +1,5 @@
 import json
+from os import times
 import sys
 
 import time
@@ -109,17 +110,17 @@ class StravaAPIKud:
         if include_all_efforts is not None:
             par['include_all_efforts'] = include_all_efforts
         # Dk if good
-        return self.http.request('GET', self.host + "/athlete/" + id, par, goiburuak)
+        return self.http.request('GET', self.host + "/activities/" + str(id), par, goiburuak)
 
     @tojson
     # Ns si ta weno?
-    def getActivityStreams(self, id=None, keys=None, key_by_type=None, goiburuak={}):
+    def getActivityStreams(self, id=None, keys=[time, distance, latlng, altitude, velocity_smooth, heartrate, cadence, watts, temp, moving, grade_smooth], key_by_type=True, goiburuak={}):
         par = {}
         if id is not None:
             par['id'] = id
         if keys is not None:
-            par['keys'] = keys
+            par['keys'] = ','.join(keys)
         if key_by_type is not None:
             par['key_by_type'] = key_by_type
         # Dk if good
-        return self.http.request('GET', self.host + "/athlete/" + id, par, goiburuak)
+        return self.http.request('GET', self.host + "/activities/" + str(id) + "/streams", par, goiburuak)
