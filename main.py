@@ -5,3 +5,6 @@ from controllers.StravaAPI import stravaApiKud
 if __name__ == '__main__':
     stravaApiKud.getAccessToTheAPI()
     print(stravaApiKud.getAthlete())
+    print(stravaApiKud.getAthleteActivities())
+    print(stravaApiKud.getActivietesById())
+    print(stravaApiKud.getActivityStreams())
