@@ -25,11 +25,11 @@ class StravaAPIKud:
             print("Aplikazioari baimena eskatu")
 
             url = "http://www.strava.com/oauth/authorize?" + \
-                  "client_id=" + str(self.stravaConfig.get('ClientID')) + \
-                  "&response_type=code" + \
-                  "&redirect_uri=http://localhost/" + \
-                  "&approval_prompt=auto" + \
-                  "&scope=read_all,profile:read_all,activity:read_all"
+                "client_id=" + str(self.stravaConfig.get('ClientID')) + \
+                "&response_type=code" + \
+                "&redirect_uri=http://localhost/" + \
+                "&approval_prompt=auto" + \
+                "&scope=read_all,profile:read_all,activity:read_all"
 
             webbrowser.open(url)
             print("Nabigatzailean stravako datuak eskatzeko baimena agertuko da. Baimenak eman eta gero, localhost serbitzarira eskaera bat egingo da. Zerbitzaria sortu ez dugunez, urlean dagoen 'code' parametro kopiatu eta 'StravaConfig.json' fitxategian sartu.")
@@ -106,7 +106,7 @@ class StravaAPIKud:
         par = {}
         if id is not None:
             par['id'] = id
-        if before is not None:
+        if include_all_efforts is not None:
             par['include_all_efforts'] = include_all_efforts
         # Dk if good
         return self.http.request('GET', self.host + "/athlete/" + id, par, goiburuak)
