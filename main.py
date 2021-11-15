@@ -23,4 +23,9 @@ if __name__ == '__main__':
     print(" ")
     print("4. Get ActivityStreams: ")
     print(" ")
-    print(stravaApiKud.getActivityStreams(em[0]["id"]))
+    em = stravaApiKud.getActivityStreams(em[0]["id"], ["time", "distance", "latlng", "altitude",
+                                         "velocity_smooth", "heartrate", "cadence", "watts", "temp", "moving", "grade_smooth"])
+
+    for e in em:
+        d = em[e]["data"]
+        print(e, len(d), d[0])

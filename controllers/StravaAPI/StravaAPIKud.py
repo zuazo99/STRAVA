@@ -114,10 +114,8 @@ class StravaAPIKud:
 
     @tojson
     # Ns si ta weno?
-    def getActivityStreams(self, id=None, keys=[time, distance, latlng, altitude, velocity_smooth, heartrate, cadence, watts, temp, moving, grade_smooth], key_by_type=True, goiburuak={}):
+    def getActivityStreams(self, id, keys=None, key_by_type=True, goiburuak={}):
         par = {}
-        if id is not None:
-            par['id'] = id
         if keys is not None:
             par['keys'] = ','.join(keys)
         if key_by_type is not None:
