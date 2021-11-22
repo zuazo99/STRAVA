@@ -102,7 +102,10 @@ class StravaAPIKud:
         return self.http.request('GET', self.host + "/athlete/activities", par, goiburuak)
 
     @tojson
-    # Ns si está bien del todo, osea si hay q poner incl en los paramtros e ifearlo?
+
+    # Ns si está bien deltodo,
+    # osea si hay q poner
+    # incl en los paramtros e ifearlo?
     def getActivietesById(self, id=None, include_all_efforts=None, goiburuak={}):
         par = {}
         if id is not None:
