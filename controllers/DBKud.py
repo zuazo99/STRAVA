@@ -3,7 +3,7 @@ import sqlite3
 try:
     sqliteConnection = sqlite3.connect('Nombre_DB')
     cursor = sqliteConnection.cursor()
-
+    #hemen sql kontsultak exekutatuko dira
 
 except sqlite3.Error as error:
 
