@@ -38,5 +38,6 @@ if __name__ == '__main__':
             luzera = len(d)
             for segundua in range(luzera-1):
                 print(e, d[segundua])
+                # Hemen joango zen SQL Insert-a
         print(" --- ")
         print(" ")
