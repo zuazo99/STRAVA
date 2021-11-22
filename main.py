@@ -35,6 +35,8 @@ if __name__ == '__main__':
                                                                                "velocity_smooth", "heartrate", "cadence", "watts", "temp", "moving", "grade_smooth"])
         for e in aktibitateInfo:
             d = aktibitateInfo[e]["data"]
-            print(e, len(d), d[1])
+            luzera = len(d)
+            for segundua in range(luzera-1):
+                print(e, d[segundua])
         print(" --- ")
         print(" ")
