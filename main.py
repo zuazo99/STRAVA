@@ -1,4 +1,6 @@
+from controllers import DBKud
 from controllers.StravaAPI import stravaApiKud
+from controllers import DBKud
 # kaixo
 
 
@@ -6,6 +8,11 @@ if __name__ == '__main__':
     print(" ")
     print("Konexioa egiten APIarekin: ")
     print(" ")
+
+    print("Datu basea proba:")
+    DBKud.datuBaseKud()
+
+
     stravaApiKud.getAccessToTheAPI()
     print(" ")
     print("1. Get Athlete: ")
