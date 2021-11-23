@@ -9,8 +9,8 @@ if __name__ == '__main__':
     print("Konexioa egiten APIarekin: ")
     print(" ")
 
-    print("Datu basea proba:")
-    DBKud.datuBaseKud()
+    #print("Datu basea proba:")
+    #DBKud.datuBaseKud()
 
 
     stravaApiKud.getAccessToTheAPI()

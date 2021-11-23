@@ -3,7 +3,7 @@ import sqlite3
 
 
 
-def datuBaseKud():
+def datuBaseKud(id,moving):
     try:
         sqliteConnection = sqlite3.connect('AktibitateInfo.db')
         cursor = sqliteConnection.cursor()
@@ -13,7 +13,12 @@ def datuBaseKud():
         sqlite_select_kontsulta =" select sqlite_version();"
         cursor.execute(sqlite_select_kontsulta)
         erantzuna = cursor.fetchall()
-        print("SQLite bersioa:", erantzuna)
+
+        query= "INSERT INTO Informazioa(ActivityID, Moving) VALUES(?,?)"
+        cursor.execute(query, [id, moving])
+
+
+
 
         cursor.close()
 
