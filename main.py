@@ -12,12 +12,14 @@ if __name__ == '__main__':
     #print("Datu basea proba:")
     #DBKud.datuBaseKud()
 
-
+    #API-ra konektatzeko.
     stravaApiKud.getAccessToTheAPI()
     print(" ")
     print("1. Get Athlete: ")
     print(" ")
-    print(stravaApiKud.getAthlete())
+    atletaInfo = stravaApiKud.getAthlete()
+    print(stravaApiKud.getAthlete()) #Atletaren informazioa lortu. {'id': 61350307, 'firstname' : 'Mikel'....}
+    print("ID_Atleta: ", atletaInfo['id'])
     print(" ")
     print("2. Get AthleteActivities: ")
     print(" ")
@@ -40,11 +42,18 @@ if __name__ == '__main__':
         print(" --- ")
         aktibitateInfo = stravaApiKud.getActivityStreams(em[indizea-1]["id"], ["time", "distance", "latlng", "altitude",
                                                                                "velocity_smooth", "heartrate", "cadence", "watts", "temp", "moving", "grade_smooth"])
+
+        print("AKTIbitate_INfo")
+        print(aktibitateInfo)
+
         for e in aktibitateInfo:
             d = aktibitateInfo[e]["data"]
+            print("D aldagaia")
+            print(d)
             luzera = len(d)
             for segundua in range(luzera-1):
                 print(e, d[segundua])
+
                 # Hemen joango zen SQL Insert-a
         print(" --- ")
         print(" ")
