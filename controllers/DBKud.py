@@ -3,9 +3,9 @@ import sqlite3
 
 
 
-def datuBaseKud(id,moving):
+def datuBaseKud(id,izena,abizena):
     try:
-        sqliteConnection = sqlite3.connect('AktibitateInfo.db')
+        sqliteConnection = sqlite3.connect('AktibitateaInfo.db')
         cursor = sqliteConnection.cursor()
         print("Konexioa ondo")
         #hemen sql kontsultak exekutatuko dira
@@ -14,9 +14,15 @@ def datuBaseKud(id,moving):
         cursor.execute(sqlite_select_kontsulta)
         erantzuna = cursor.fetchall()
 
-        query= "INSERT INTO Informazioa(ActivityID, Moving) VALUES(?,?)"
-        cursor.execute(query, [id, moving])
-
+        query= "INSERT INTO Erabiltzailea(erabID, izena, abizena) VALUES(?,?,?)"
+        cursor.execute(query, [id, izena, abizena])
+        sqliteConnection.commit()
+        print("Ondo gordeta")
+        query2= "SELECT * FROM Erabiltzailea;"
+        cursor.execute(query2)
+        erabiltzailea = cursor.fetchall()
+        print("Kontsulta")
+        print(erabiltzailea)
 
 
 
