@@ -21,11 +21,12 @@ if __name__ == '__main__':
     print(stravaApiKud.getAthlete()) #Atletaren informazioa lortu. {'id': 61350307, 'firstname' : 'Mikel'....}
     print("ID_Atleta: ", atletaInfo['id'])
     print("Datu basea proba:")
-    DBKud.datuBaseKud(atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'])
+    #DBKud.datuBaseKud(atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'])
+    DBKud.datuBaseKud()
     print(" ")
     print("2. Get AthleteActivities: ")
     print(" ")
-    em = stravaApiKud.getAthleteActivities()
+    em = stravaApiKud.getAthleteActivities() #Returns the activities of an athlete. [{"resource_state : 2, "athlete : {"id" : 1234}, "id" : 123456}]
     print(em)
     print(" ")
     print("3. Get ActivityById: ")
