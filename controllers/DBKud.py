@@ -31,6 +31,7 @@ class DBKudeaketa:
         if sqliteConnection:
             sqliteConnection.close()
             print("SQLite konexioa itzi egin da")
+
     def atletaSartu(self, datuak):
         konexioa=self.datuBaseKonexioa()
         cursor = konexioa.cursor()
