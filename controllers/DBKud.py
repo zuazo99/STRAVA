@@ -58,6 +58,12 @@ class DBKudeaketa:
 
         print("+{:-<20}+{:-<20}+{:-<20}+".format("", "", ""))
 
+
+    def tablakSortu(self):
+        konexioa = self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+
+
     def atletaEzabatu(self):
         konexioa = self.datuBaseKonexioa()
         cursor = konexioa.cursor()
