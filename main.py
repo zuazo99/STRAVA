@@ -4,13 +4,15 @@ from controllers import DBKud
 # kaixo
 
 
+
 if __name__ == '__main__':
+
     print(" ")
     print("Konexioa egiten APIarekin: ")
     print(" ")
-
+    DatuBasea = DBKud.DBKudeaketa()
     print("Datu Basearekin konexioa:")
-    DBKud.DBKudeaketa.datuBaseKonexioa()
+    DatuBasea.datuBaseKonexioa()
 
     #API-ra konektatzeko.
     stravaApiKud.getAccessToTheAPI()
@@ -23,7 +25,7 @@ if __name__ == '__main__':
     # DBKud.datuBaseKud(atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'])
     #DBKud.DBKudeaketa.atletaSartu(atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'])
     print("Datu basea atleta kontsultatu:")
-    DBKud.DBKudeaketa.atletaKontsultatu()
+    DatuBasea.atletaKontsultatu()
 
     print(" ")
     print("2. Get AthleteActivities: ")

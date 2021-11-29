@@ -20,11 +20,17 @@ class DBKudeaketa:
         except sqlite3.Error as error:
 
             print("Errorea konekzioa egiten sqlite")
-        finally:
-            if sqliteConnection:
-                sqliteConnection.close()
-                print("SQLite konexioa itzi egin da")
 
+        #finally:
+           #if sqliteConnection:
+            #  sqliteConnection.close()
+             #  print("SQLite konexioa itzi egin da")
+
+    def datuBaseaKonexioaItxi(self):
+        sqliteConnection = self.datuBaseKonexioa()
+        if sqliteConnection:
+            sqliteConnection.close()
+            print("SQLite konexioa itzi egin da")
     def atletaSartu(self, datuak):
         konexioa=self.datuBaseKonexioa()
         cursor = konexioa.cursor()
@@ -50,3 +56,9 @@ class DBKudeaketa:
             print("|{:^20}|{:^20}|{:^20}|".format(erabID, izena, abizena))
 
         print("+{:-<20}+{:-<20}+{:-<20}+".format("", "", ""))
+
+    def atletaEzabatu(self):
+        konexioa = self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = ""
+        cursor.execute(query)
