@@ -9,8 +9,8 @@ if __name__ == '__main__':
     print("Konexioa egiten APIarekin: ")
     print(" ")
 
-    #print("Datu basea proba:")
-    #DBKud.datuBaseKud()
+    print("Datu Basearekin konexioa:")
+    DBKud.DBKudeaketa.datuBaseKonexioa()
 
     #API-ra konektatzeko.
     stravaApiKud.getAccessToTheAPI()
@@ -20,9 +20,11 @@ if __name__ == '__main__':
     atletaInfo = stravaApiKud.getAthlete()
     print(stravaApiKud.getAthlete()) #Atletaren informazioa lortu. {'id': 61350307, 'firstname' : 'Mikel'....}
     print("ID_Atleta: ", atletaInfo['id'])
-    print("Datu basea proba:")
-    #DBKud.datuBaseKud(atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'])
-    DBKud.datuBaseKud()
+    # DBKud.datuBaseKud(atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'])
+    #DBKud.DBKudeaketa.atletaSartu(atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'])
+    print("Datu basea atleta kontsultatu:")
+    DBKud.DBKudeaketa.atletaKontsultatu()
+
     print(" ")
     print("2. Get AthleteActivities: ")
     print(" ")

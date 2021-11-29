@@ -29,7 +29,8 @@ class DBKudeaketa:
         konexioa=self.datuBaseKonexioa()
         cursor = konexioa.cursor()
         query= "INSERT INTO Erabiltzailea(erabID, izena, abizena) VALUES(?,?,?)"
-        cursor.execute(query, [id, izena, abizena])
+        cursor.execute(query, datuak)
+        #cursor.execute(query, [id, izena, abizena])
         konexioa.commit()
         cursor.close()
         print("Ondo gordeta")
