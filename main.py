@@ -22,6 +22,8 @@ if __name__ == '__main__':
     atletaInfo = stravaApiKud.getAthlete()
     print(stravaApiKud.getAthlete()) #Atletaren informazioa lortu. {'id': 61350307, 'firstname' : 'Mikel'....}
     print("ID_Atleta: ", atletaInfo['id'])
+    print("Atleta ID_Materiala:", atletaInfo['shoes'][0]['id'])
+    print("Materiala izena:", atletaInfo['shoes'][0]['name'])
     # DBKud.datuBaseKud(atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'])
     #DBKud.DBKudeaketa.atletaSartu(atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'])
     print("Datu basea atleta kontsultatu:")
