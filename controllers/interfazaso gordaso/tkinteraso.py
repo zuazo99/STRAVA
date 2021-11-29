@@ -44,9 +44,9 @@ class pantallitas:
 
     def data_bidez_kontsulta(self):
         print("aaaaah")
-        self.pagina1 = ttk.Frame(self.cuaderno)
-        self.cuaderno.add(self.pagina1, text="Data bidez kontsultatu")
-        self.labelframe1 = ttk.LabelFrame(self.pagina1, text="Tartea")
+        self.pagina3 = ttk.Frame(self.cuaderno)
+        self.cuaderno.add(self.pagina3, text="Data bidez kontsultatu")
+        self.labelframe1 = ttk.LabelFrame(self.pagina3, text="Tartea")
         self.labelframe1.grid(column=0, row=0, padx=5, pady=10)
         self.label1 = ttk.Label(self.labelframe1, text="Noiztik:")
         self.label1.grid(column=0, row=0, padx=4, pady=4)
