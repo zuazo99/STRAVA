@@ -30,7 +30,8 @@ class pantallitas:
         self.boton1.grid(column=1, row=2, padx=4, pady=4)
 
     def freskatu(self):
-        print("aaaaah")
+        print("Aqui cogemos los 30 ultimos eventos de la api de strava y si no están ya metidos en la db los añadimos, si están pasamos")
+
 
     def materiala_kontzultatu(self):
         print("aaaaah")
@@ -40,7 +41,7 @@ class pantallitas:
         self.boton2.grid(column=1, row=2, padx=4, pady=4)
 
     def material(self):
-        print("wooooh")
+        print("Imprimimos debajo del botón el material que tenemos y cuantos km hemos hecho con ellos")
 
     def data_bidez_kontsulta(self):
         print("aaaaah")
@@ -62,6 +63,8 @@ class pantallitas:
         self.boton1.grid(column=1, row=2, padx=4, pady=4)
 
     def kontz_data(self):
+        print("imprimimos las actividades hechas entre las fechas seleccionadas")
+        #SELECT * FROM entrenamientos WHERE data BETWEEN %noiztik AND %nora
         print(self.noiztik.get())
         print(self.nora.get())
 
