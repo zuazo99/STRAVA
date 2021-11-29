@@ -33,10 +33,17 @@ class DBKudeaketa:
             sqliteConnection.close()
             print("SQLite konexioa itzi egin da")
 
+    def materialaSartu(self, datuak):
+        konexioa = self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = "INSERT INTO Ekipamendua(materiala) VALUES(?)"
+        cursor.execute(query, datuak)
+        konexioa.commit()
+        print("Materiala ondo gordeta")
     def atletaSartu(self, datuak):
         konexioa=self.datuBaseKonexioa()
         cursor = konexioa.cursor()
-        query= "INSERT INTO Erabiltzailea(erabID, izena, abizena) VALUES(?,?,?)"
+        query= "INSERT INTO Erabiltzailea(erabID, izena, abizena, ekipamenduMat) VALUES(?,?,?)"
         cursor.execute(query, datuak)
         #cursor.execute(query, [id, izena, abizena])
         konexioa.commit()
