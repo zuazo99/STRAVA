@@ -15,31 +15,54 @@ class pantallitas:
         self.window.title("STRAVass")
         self.cuaderno=ttk.Notebook(self.window)
         print("entra login")
-        self.login()
+        self.datuak_freskatu()
+        self.materiala_kontzultatu()
+        self.data_bidez_kontsulta()
         print("sale de login")
         self.cuaderno.grid(column=0, row=0, padx=10, pady=10)
         self.window.mainloop()
         print("aaaaah")
-    def login(self):
+    def datuak_freskatu(self):
         print("aaaaah")
         self.pagina1 = ttk.Frame(self.cuaderno)
-        self.cuaderno.add(self.pagina1, text="Carga de artículos")
-        self.labelframe1 = ttk.LabelFrame(self.pagina1, text="Artículo")
-        self.labelframe1.grid(column=0, row=0, padx=5, pady=10)
-        self.label1 = ttk.Label(self.labelframe1, text="Descripción:")
-        self.label1.grid(column=0, row=0, padx=4, pady=4)
-        self.descripcioncarga = tk.StringVar()
-        self.entrydescripcion = ttk.Entry(self.labelframe1, textvariable=self.descripcioncarga)
-        self.entrydescripcion.grid(column=1, row=0, padx=4, pady=4)
-        self.label2 = ttk.Label(self.labelframe1, text="Precio:")
-        self.label2.grid(column=0, row=1, padx=4, pady=4)
-        self.preciocarga = tk.StringVar()
-        self.entryprecio = ttk.Entry(self.labelframe1, textvariable=self.preciocarga)
-        self.entryprecio.grid(column=1, row=1, padx=4, pady=4)
-        self.boton1 = ttk.Button(self.labelframe1, text="Confirmar", command=self.agregar)
+        self.cuaderno.add(self.pagina1, text="Datuak freskatu")
+        self.boton1 = ttk.Button(self.pagina1, text="Freskatu", command=self.freskatu)
         self.boton1.grid(column=1, row=2, padx=4, pady=4)
 
-    def agregar(self):
+    def freskatu(self):
         print("aaaaah")
+
+    def materiala_kontzultatu(self):
+        print("aaaaah")
+        self.pagina2 = ttk.Frame(self.cuaderno)
+        self.cuaderno.add(self.pagina2, text="Materiala kontsultatu")
+        self.boton2 = ttk.Button(self.pagina2, text="Kontsultatu", command=self.material)
+        self.boton2.grid(column=1, row=2, padx=4, pady=4)
+
+    def material(self):
+        print("wooooh")
+
+    def data_bidez_kontsulta(self):
+        print("aaaaah")
+        self.pagina1 = ttk.Frame(self.cuaderno)
+        self.cuaderno.add(self.pagina1, text="Data bidez kontsultatu")
+        self.labelframe1 = ttk.LabelFrame(self.pagina1, text="Tartea")
+        self.labelframe1.grid(column=0, row=0, padx=5, pady=10)
+        self.label1 = ttk.Label(self.labelframe1, text="Noiztik:")
+        self.label1.grid(column=0, row=0, padx=4, pady=4)
+        self.noiztik = tk.StringVar()
+        self.entryNoiztik = ttk.Entry(self.labelframe1, textvariable=self.noiztik)
+        self.entryNoiztik.grid(column=1, row=0, padx=4, pady=4)
+        self.label2 = ttk.Label(self.labelframe1, text="Nora:")
+        self.label2.grid(column=0, row=1, padx=4, pady=4)
+        self.nora = tk.StringVar()
+        self.entryNora = ttk.Entry(self.labelframe1, textvariable=self.nora)
+        self.entryNora.grid(column=1, row=1, padx=4, pady=4)
+        self.boton1 = ttk.Button(self.labelframe1, text="Balioztatu", command=self.kontz_data)
+        self.boton1.grid(column=1, row=2, padx=4, pady=4)
+
+    def kontz_data(self):
+        print(self.noiztik.get())
+        print(self.nora.get())
 
 pantallitas()
