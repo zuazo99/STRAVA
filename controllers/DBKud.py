@@ -1,5 +1,6 @@
 import sqlite3
 
+#https://www.sqlitetutorial.net/sqlite-date/
 
 class DBKudeaketa:
 
