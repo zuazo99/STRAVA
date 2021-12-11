@@ -86,7 +86,17 @@ if __name__ == '__main__':
         if DatuBasea.entrenamenduaDagoenKonprobatu(aktibitatea["id"]) == 0:
             DatuBasea.EntrenamenduaSartu(datos)
 
-        # print("Abiadura", em[0][''] )
+        print("Posizioa", aktibitatea['start_latlng'])
+        print("Abiadura", aktibitatea['average_speed'])
+        print("pultsazioak", aktibitatea['average_heartrate'])
+        print("entreData", data)
+        print("entreOrdua", ordua)
+        print("idEntrenamendua", aktibitatea["id"])
+        prueba=' '.join(str(e) for e in aktibitatea['start_latlng'])
+        print(prueba)
+        datos2 = (prueba, aktibitatea['average_speed'], aktibitatea['average_heartrate'], data, ordua, aktibitatea["id"])
+        DatuBasea.medizioakSartu(datos2)
+
         indizea = indizea + 1
         print(" ")
         print("Informazioa->")

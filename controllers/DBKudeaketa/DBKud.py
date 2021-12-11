@@ -153,3 +153,18 @@ class DBKudeaketa:
         cursor.execute(query, [id])
         erantzuna = cursor.fetchall()
         return len(erantzuna)
+
+    '''
+                MEDIZIOAK KUDEATU
+        '''
+
+    def medizioakSartu(self, datuak):
+        konexioa=self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = "INSERT INTO Medizioak(posizioa, abiadura, pultsazioak, entreData, entreOrdua, idEntrenamendua) " \
+                "VALUES(?,?,?,?,?,?)"
+        cursor.execute(query, datuak)
+        #cursor.execute(query, [id, izena, abizena])
+        konexioa.commit()
+        cursor.close()
+        print("Ondo gordeta")
