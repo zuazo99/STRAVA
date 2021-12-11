@@ -12,6 +12,13 @@ class DBKudeaketa:
             print("Konexioa ondo")
             #hemen sql kontsultak exekutatuko dira
 
+            #Datuak kontsultatu
+            #query = "SELECT ekipamenduMat FROM Erabiltzailea WHERE erabID = "AQUI METEMOS EL ERABILTZAILE @";";
+
+
+
+            #El primer imput de data es data1 y el segundo data2
+            #query = "SELECT * FROM Informazioa WHERE ()";
             #sqlite_select_kontsulta ="select sqlite_version();"
             #cursor.execute(sqlite_select_kontsulta)
             #erantzuna = cursor.fetchall()
