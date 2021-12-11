@@ -34,11 +34,11 @@ class DBKudeaketa:
             sqliteConnection.close()
             print("SQLite konexioa itzi egin da")
 
-    def materialaSartu(self, datuak):
+    def materialaSartu(self, datua):
         konexioa = self.datuBaseKonexioa()
         cursor = konexioa.cursor()
         query = "INSERT INTO Ekipamendua(materiala) VALUES(?)"
-        cursor.execute(query, [datuak])
+        cursor.execute(query,[datua])
         konexioa.commit()
         print("Materiala ondo gordeta")
 
@@ -55,21 +55,21 @@ class DBKudeaketa:
         cursor = konexioa.cursor()
         query = "SELECT * FROM Ekipamendua;"
         cursor.execute(query)
-        materiala = cursor.fetchall()
-        print(materiala)
-        print("+{:-<20}".format(""))
-        print("|{:^20}".format("materiala"))
-        print("+{:-<20}".format(""))
+        ekipamenduIzena = cursor.fetchall()
+        print(ekipamenduIzena)
+        print("+{:-<50}+".format(""))
+        print("|{:^50}|".format("materiala"))
+        print("+{:-<50}+".format(""))
 
-        for materiala in materiala:
-            print("|{:^20}|".format(materiala))
+        for materiala, in ekipamenduIzena:
+            print("|{:^50}|".format(materiala))
 
-        print("+{:-<20}".format(""))
+        print("+{:-<50}+".format(""))
 
     def atletaSartu(self, datuak):
         konexioa=self.datuBaseKonexioa()
         cursor = konexioa.cursor()
-        query= "INSERT INTO Erabiltzailea(erabID, izena, abizena, ekipamenduMat) VALUES(?,?,?,?)"
+        query = "INSERT INTO Erabiltzailea(erabID, izena, abizena, ekipamenduMat) VALUES(?,?,?,?)"
         cursor.execute(query, datuak)
         #cursor.execute(query, [id, izena, abizena])
         konexioa.commit()
@@ -83,14 +83,14 @@ class DBKudeaketa:
         cursor.execute(query)
         erabiltzailea = cursor.fetchall()
         # https://www.w3schools.com/python/ref_string_format.asp
-        print("+{:-<20}+{:-<20}+{:-<20}+".format("", "", ""))
-        print("|{:^20}|{:^20}|{:^20}|".format("erabID", "izena", "abizena"))
-        print("+{:-<20}+{:-<20}+{:-<20}+".format("", "", ""))
+        print("+{:-<20}+{:-<20}+{:-<20}+{:-<20}+".format("", "", "",""))
+        print("|{:^20}|{:^20}|{:^20}|{:^20}|".format("erabID", "izena", "abizena", "ekipamenduMat"))
+        print("+{:-<20}+{:-<20}+{:-<20}+{:-<20}+".format("", "", "", ""))
 
-        for erabID, izena, abizena in erabiltzailea:
-            print("|{:^20}|{:^20}|{:^20}|".format(erabID, izena, abizena))
+        for erabID, izena, abizena, ekipamenduMat in erabiltzailea:
+            print("|{:^20}|{:^20}|{:^20}|{:^20}|".format(erabID, izena, abizena, ekipamenduMat))
 
-        print("+{:-<20}+{:-<20}+{:-<20}+".format("", "", ""))
+        print("+{:-<20}+{:-<20}+{:-<20}+{:-<20}+".format("", "", "", ""))
 
 
     def tablakSortu(self): #Los que necesiten fecha mejor desde aqui para usar la libreria datetime

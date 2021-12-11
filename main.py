@@ -29,8 +29,10 @@ if __name__ == '__main__':
     #DBKud.DBKudeaketa.atletaSartu(atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'])
 
     #DatuBasea.materialaSartu(atletaInfo['shoes'][0]['name'])
-    DatuBasea.materialaEzabatu()
     DatuBasea.materialaKontsultatu()
+    #DatuBasea.materialaEzabatu()
+    datuak = (atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'], atletaInfo['shoes'][0]['name'])
+    DatuBasea.atletaSartu(datuak)
 
     print("Datu basea atleta kontsultatu:")
     DatuBasea.atletaKontsultatu()
