@@ -135,3 +135,13 @@ class DBKudeaketa:
             ENTRENAMENDUA KUDEATU
     '''
 
+    def EntrenamenduaSartu(self, datuak):
+        konexioa=self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = "INSERT INTO Entrenamendua(mota, data, km, denbora, ordua, entrErabId) " \
+                "VALUES(?,?,?,?,?,?)"
+        cursor.execute(query, datuak)
+        #cursor.execute(query, [id, izena, abizena])
+        konexioa.commit()
+        cursor.close()
+        print("Ondo gordeta")

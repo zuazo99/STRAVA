@@ -1,5 +1,6 @@
 from controllers.StravaAPI import stravaApiKud
 from controllers.DBKudeaketa import DBKud
+import datetime
 # kaixo
 
 
@@ -41,11 +42,20 @@ if __name__ == '__main__':
     em = stravaApiKud.getAthleteActivities() #Returns the activities of an athlete. [{"resource_state : 2, "athlete : {"id" : 1234}, "id" : 123456}]
     print(em)
     print("Mota", em[0]['type'])
-    print("data", )
-    print("km", )
-    print("denbora", )
-    print("ordua", )
+    dataOrdua = str(em[0]['start_date']).split('T')
+    data = dataOrdua[0]
+    ordua = dataOrdua[1].replace('Z', '')
+    print("Data", data)
+    print("Ordua", ordua)
+    kilometroak = int(em[0]['distance'])/1000
+    print("Kilometroak", kilometroak)
+    denbora = str(datetime.timedelta(seconds=em[0]['elapsed_time']))
+    print("denbora", denbora)
     print("erabID", atletaInfo['id'])
+
+    DatuBasea.EntrenamenduaSartu(em[0]['type'], data, kilometroak, denbora)
+
+
     print(" ")
     print("3. Get ActivityById: ")
     print(" ")
