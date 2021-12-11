@@ -1,8 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from tkinter import messagebox as mb
-from tkinter import scrolledtext as st
-import controllers.DBKud as db
+import controllers.DBKudeaketa.DBKud as db
 
 #https://www.tutorialesprogramacionya.com/pythonya/detalleconcepto.php?codigo=82
 #https://www.programadornovato.com/colocar-datos-de-nuestra-base-de-datos-en-nuestra-tabla-treeview-con-python-y-tkinter-06/

@@ -41,11 +41,23 @@ class DBKudeaketa:
             sqliteConnection.close()
             print("SQLite konexioa itzi egin da")
 
+    '''
+        MATERIALA KUDEATU
+    '''
+
+    def materialaDagoenKonprobatu(self, datua):
+        konexioa = self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = "SELECT materiala FROM Ekipamendua WHERE materiala = ? ;"
+        cursor.execute(query, [datua])
+        erantzuna = cursor.fetchall()
+        return len(erantzuna)
+
     def materialaSartu(self, datua):
         konexioa = self.datuBaseKonexioa()
         cursor = konexioa.cursor()
         query = "INSERT INTO Ekipamendua(materiala) VALUES(?)"
-        cursor.execute(query,[datua])
+        cursor.execute(query, [datua])
         konexioa.commit()
         print("Materiala ondo gordeta")
 
@@ -72,6 +84,19 @@ class DBKudeaketa:
             print("|{:^50}|".format(materiala))
 
         print("+{:-<50}+".format(""))
+
+
+    '''
+        ATLETA KUDEATU
+    '''
+
+    def atletaDagoenKonprobatu(self, id):
+        konexioa = self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = "SELECT erabID FROM Erabiltzailea WHERE erabID = ? ;"
+        cursor.execute(query, [id])
+        erantzuna = cursor.fetchall()
+        return len(erantzuna)
 
     def atletaSartu(self, datuak):
         konexioa=self.datuBaseKonexioa()
@@ -100,13 +125,13 @@ class DBKudeaketa:
         print("+{:-<20}+{:-<20}+{:-<20}+{:-<20}+".format("", "", "", ""))
 
 
-    def tablakSortu(self): #Los que necesiten fecha mejor desde aqui para usar la libreria datetime
-        konexioa = self.datuBaseKonexioa()
-        cursor = konexioa.cursor()
-
-
     def atletaEzabatu(self):
         konexioa = self.datuBaseKonexioa()
         cursor = konexioa.cursor()
         query = ""
         cursor.execute(query)
+
+    '''
+            ENTRENAMENDUA KUDEATU
+    '''
+

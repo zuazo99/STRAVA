@@ -1,6 +1,5 @@
-from controllers import DBKud
 from controllers.StravaAPI import stravaApiKud
-from controllers import DBKud
+from controllers.DBKudeaketa import DBKud
 # kaixo
 
 
@@ -25,16 +24,15 @@ if __name__ == '__main__':
     print("Atleta ID_Materiala:", atletaInfo['shoes'][0]['id'])
     print("Materiala izena:", atletaInfo['shoes'][0]['name'])
     print("Bizikleta datuak", atletaInfo['bikes'])
-    # DBKud.datuBaseKud(atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'])
-    #DBKud.DBKudeaketa.atletaSartu(atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'])
 
-    #DatuBasea.materialaSartu(atletaInfo['shoes'][0]['name'])
+    if DatuBasea.materialaDagoenKonprobatu(atletaInfo['shoes'][0]['name']) == 0:
+        DatuBasea.materialaSartu(atletaInfo['shoes'][0]['name'])
     DatuBasea.materialaKontsultatu()
-    #DatuBasea.materialaEzabatu()
-    datuak = (atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'], atletaInfo['shoes'][0]['name'])
-    #DatuBasea.atletaSartu(datuak)
 
-    print("Datu basea atleta kontsultatu:")
+    datuak = (atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'], atletaInfo['shoes'][0]['name'])
+
+    if DatuBasea.atletaDagoenKonprobatu(atletaInfo['id']) == 0:
+        DatuBasea.atletaSartu(datuak)
     DatuBasea.atletaKontsultatu()
 
     print(" ")
@@ -42,6 +40,12 @@ if __name__ == '__main__':
     print(" ")
     em = stravaApiKud.getAthleteActivities() #Returns the activities of an athlete. [{"resource_state : 2, "athlete : {"id" : 1234}, "id" : 123456}]
     print(em)
+    print("Mota", em[0]['type'])
+    print("data", )
+    print("km", )
+    print("denbora", )
+    print("ordua", )
+    print("erabID", atletaInfo['id'])
     print(" ")
     print("3. Get ActivityById: ")
     print(" ")
