@@ -106,7 +106,7 @@ if __name__ == '__main__':
 
         print("AKTIbitate_INfo")
         print(aktibitateInfo)
-
+    '''
         for e in aktibitateInfo:
             d = aktibitateInfo[e]["data"]
             print("D aldagaia")
@@ -118,3 +118,4 @@ if __name__ == '__main__':
                 # Hemen joango zen SQL Insert-a
         print(" --- ")
         print(" ")
+    '''
