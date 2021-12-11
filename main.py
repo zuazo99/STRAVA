@@ -53,8 +53,10 @@ if __name__ == '__main__':
     print("denbora", denbora)
     print("erabID", atletaInfo['id'])
 
-    DatuBasea.EntrenamenduaSartu(em[0]['type'], data, kilometroak, denbora)
+    datos = (em[0]['type'], data, kilometroak, denbora, ordua, atletaInfo['id'])
+    #DatuBasea.EntrenamenduaSartu(datos)
 
+    #print("Abiadura", em[0][''] )
 
     print(" ")
     print("3. Get ActivityById: ")
@@ -66,7 +68,25 @@ if __name__ == '__main__':
     indizea = 1
     for aktibitatea in em:
         print(str(indizea) + ". Aktibitatea")
+
         print("IDa: " + str(aktibitatea["id"]))
+        print("Mota", aktibitatea['type'])
+        dataOrdua = str(aktibitatea['start_date']).split('T')
+        data = dataOrdua[0]
+        ordua = dataOrdua[1].replace('Z', '')
+        print("Data", data)
+        print("Ordua", ordua)
+        kilometroak = int(aktibitatea['distance']) / 1000
+        print("Kilometroak", kilometroak)
+        denbora = str(datetime.timedelta(seconds=aktibitatea['elapsed_time']))
+        print("denbora", denbora)
+        print("erabID", atletaInfo['id'])
+
+        datos = (aktibitatea["id"], aktibitatea['type'], data, kilometroak, denbora, ordua, atletaInfo['id'])
+        if DatuBasea.entrenamenduaDagoenKonprobatu(aktibitatea["id"]) == 0:
+            DatuBasea.EntrenamenduaSartu(datos)
+
+        # print("Abiadura", em[0][''] )
         indizea = indizea + 1
         print(" ")
         print("Informazioa->")
