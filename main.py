@@ -24,8 +24,14 @@ if __name__ == '__main__':
     print("ID_Atleta: ", atletaInfo['id'])
     print("Atleta ID_Materiala:", atletaInfo['shoes'][0]['id'])
     print("Materiala izena:", atletaInfo['shoes'][0]['name'])
+    print("Bizikleta datuak", atletaInfo['bikes'])
     # DBKud.datuBaseKud(atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'])
     #DBKud.DBKudeaketa.atletaSartu(atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'])
+
+    #DatuBasea.materialaSartu(atletaInfo['shoes'][0]['name'])
+    DatuBasea.materialaEzabatu()
+    DatuBasea.materialaKontsultatu()
+
     print("Datu basea atleta kontsultatu:")
     DatuBasea.atletaKontsultatu()
 

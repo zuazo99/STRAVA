@@ -1,4 +1,5 @@
 import sqlite3
+import datetime
 
 #https://www.sqlitetutorial.net/sqlite-date/
 
@@ -37,13 +38,38 @@ class DBKudeaketa:
         konexioa = self.datuBaseKonexioa()
         cursor = konexioa.cursor()
         query = "INSERT INTO Ekipamendua(materiala) VALUES(?)"
-        cursor.execute(query, datuak)
+        cursor.execute(query, [datuak])
         konexioa.commit()
         print("Materiala ondo gordeta")
+
+    def materialaEzabatu(self):
+        konexioa = self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = "DELETE FROM Ekipamendua WHERE materiala = 'Nike Air Zoom Pegasus 37';"
+        cursor.execute(query)
+        konexioa.commit()
+        print("Ondo ezabatu da")
+
+    def materialaKontsultatu(self):
+        konexioa = self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = "SELECT * FROM Ekipamendua;"
+        cursor.execute(query)
+        materiala = cursor.fetchall()
+        print(materiala)
+        print("+{:-<20}".format(""))
+        print("|{:^20}".format("materiala"))
+        print("+{:-<20}".format(""))
+
+        for materiala in materiala:
+            print("|{:^20}|".format(materiala))
+
+        print("+{:-<20}".format(""))
+
     def atletaSartu(self, datuak):
         konexioa=self.datuBaseKonexioa()
         cursor = konexioa.cursor()
-        query= "INSERT INTO Erabiltzailea(erabID, izena, abizena, ekipamenduMat) VALUES(?,?,?)"
+        query= "INSERT INTO Erabiltzailea(erabID, izena, abizena, ekipamenduMat) VALUES(?,?,?,?)"
         cursor.execute(query, datuak)
         #cursor.execute(query, [id, izena, abizena])
         konexioa.commit()
@@ -67,7 +93,7 @@ class DBKudeaketa:
         print("+{:-<20}+{:-<20}+{:-<20}+".format("", "", ""))
 
 
-    def tablakSortu(self):
+    def tablakSortu(self): #Los que necesiten fecha mejor desde aqui para usar la libreria datetime
         konexioa = self.datuBaseKonexioa()
         cursor = konexioa.cursor()
 
