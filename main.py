@@ -32,7 +32,7 @@ if __name__ == '__main__':
     DatuBasea.materialaKontsultatu()
     #DatuBasea.materialaEzabatu()
     datuak = (atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'], atletaInfo['shoes'][0]['name'])
-    DatuBasea.atletaSartu(datuak)
+    #DatuBasea.atletaSartu(datuak)
 
     print("Datu basea atleta kontsultatu:")
     DatuBasea.atletaKontsultatu()
