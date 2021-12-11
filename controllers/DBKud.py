@@ -18,7 +18,7 @@ class DBKudeaketa:
 
 
             #El primer imput de data es data1 y el segundo data2
-            #query = "SELECT * FROM Informazioa WHERE ()";
+            #query = "SELECT * FROM Informazioa fecha BETWEEN 'data1' AND 'data2'";
             #sqlite_select_kontsulta ="select sqlite_version();"
             #cursor.execute(sqlite_select_kontsulta)
             #erantzuna = cursor.fetchall()
