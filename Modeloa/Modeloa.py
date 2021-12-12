@@ -1,4 +1,4 @@
-from Kontroladorea.StravaAPI import StravaAPIKud
+from StravaAPI import stravaApiKud
 from Kontroladorea.DBKudeaketa import DBKud
 import datetime
 #Para seguir el patron MVC:
@@ -9,7 +9,6 @@ class Modeloa:
         print(" ")
         print("Konexioa egiten APIarekin: ")
         print(" ")
-        stravaApiKud = StravaAPIKud.StravaAPIKud()
         DatuBasea = DBKud.DBKudeaketa()
         print("Datu Basearekin konexioa:")
         DatuBasea.datuBaseKonexioa()
