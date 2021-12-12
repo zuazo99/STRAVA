@@ -148,6 +148,13 @@ class DBKudeaketa:
         erantzuna = cursor.fetchall()
         return len(erantzuna)
 
+    def entrenamenduaUpdate(self):
+        konexioa = self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = "UPDATE ;"
+        cursor.execute(query, [id])
+        erantzuna = cursor.fetchall()
+
     '''
         ------------------------------- MEDIZIOAK KUDEATU -------------------------------
     '''

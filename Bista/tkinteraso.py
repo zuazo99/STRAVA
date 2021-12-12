@@ -43,7 +43,7 @@ class pantallitas:
 
     def material(self):
         print("Imprimimos debajo del botón el material que tenemos y cuantos km hemos hecho con ellos")
-        db.DBKudeaketa.materialaKontsultatu(self)
+        self.datuak.materialaKontsultatu()
 
     def data_bidez_kontsulta(self):
         print("aaaaah")
