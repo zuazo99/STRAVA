@@ -13,7 +13,7 @@ class pantallitas:
         self.datuak=db.DBKudeaketa()
         print("pasa de datuak")
         self.window=tk.Tk()
-        self.window.title("STRAVass")
+        self.window.title("STRAVA Interfazea")
         self.cuaderno=ttk.Notebook(self.window)
         print("entra login")
         self.datuak_freskatu()
