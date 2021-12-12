@@ -68,7 +68,7 @@ class Modeloa:
             aktibitateaID = stravaApiKud.getActivietesById(aktibitatea["id"])
             print("Ekipamendua ID:", aktibitateaID['gear_id'])
             ekipamenduaID = aktibitateaID['gear_id']
-            ekipamenduTot = ""
+            ekipamenduTot = "A"
             if ekipamenduaID is None:
                 ekipamenduTot = "X"
 
