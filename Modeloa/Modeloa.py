@@ -65,7 +65,20 @@ class Modeloa:
             print("denbora", denbora)
             print("erabID", atletaInfo['id'])
 
-            datos = (aktibitatea["id"], aktibitatea['type'], data, kilometroak, denbora, ordua, atletaInfo['id'])
+            aktibitateaID = stravaApiKud.getActivietesById(aktibitatea["id"])
+            print("Ekipamendua ID:", aktibitateaID['gear_id'])
+            ekipamenduaID = aktibitateaID['gear_id']
+            ekipamenduTot = ""
+            if ekipamenduaID is None:
+                ekipamenduTot = "X"
+
+            else:
+                ekipamendua = stravaApiKud.getGearsById(ekipamenduaID)
+                ekipamenduMarca = ekipamendua['brand_name']
+                ekipamenduModelo = ekipamendua['model_name']
+                ekipamenduTot = ekipamenduMarca+" "+ekipamenduModelo
+
+            datos = (aktibitatea["id"], aktibitatea['type'], data, kilometroak, denbora, ordua, atletaInfo['id'], ekipamenduTot)
             if DatuBasea.entrenamenduaDagoenKonprobatu(aktibitatea["id"]) == 0:
                 DatuBasea.EntrenamenduaSartu(datos)
 
@@ -84,7 +97,7 @@ class Modeloa:
             medizioak = (latilng, aktibitatea['average_speed'], aktibitatea['average_heartrate'], data, ordua, aktibitatea["id"])
             if DatuBasea.medizioakDagoenKonprobatu(aktibitatea["id"]):
                 DatuBasea.medizioakSartu(medizioak)
-            aktibitateaID = stravaApiKud.getActivietesById(aktibitatea["id"])
+           # aktibitateaID = stravaApiKud.getActivietesById(aktibitatea["id"])
             print()
             '''
             SEGMENTUAK LORTU
@@ -108,6 +121,10 @@ class Modeloa:
                 if DatuBasea.SegmentuakDagoenKonprobatu(datosSegmentoKomprobatu) == 0:
                     DatuBasea.SegmentuakSartu(datosSegmentua)
 
+
+            '''
+                BUELTAK LORTU
+            '''
             indizea = indizea + 1
             print(" ")
             '''

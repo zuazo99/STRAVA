@@ -133,8 +133,8 @@ class DBKudeaketa:
     def EntrenamenduaSartu(self, datuak):
         konexioa=self.datuBaseKonexioa()
         cursor = konexioa.cursor()
-        query = "INSERT INTO Entrenamendua(ID, mota, data, km, denbora, ordua, entrErabId) " \
-                "VALUES(?,?,?,?,?,?,?)"
+        query = "INSERT INTO Entrenamendua(ID, mota, data, km, denbora, ordua, entrErabId, erabilitakoMateriala) " \
+                "VALUES(?,?,?,?,?,?,?,?)"
         cursor.execute(query, datuak)
         #cursor.execute(query, [id, izena, abizena])
         konexioa.commit()

@@ -125,3 +125,12 @@ class StravaAPIKud:
             par['key_by_type'] = key_by_type
         # Dk if good
         return self.http.request('GET', self.host + "/activities/" + str(id) + "/streams", par, goiburuak)
+
+    @tojson
+    def getGearsById(self, id=None, goiburuak={}):
+        par = {}
+        if id is not None:
+            par['id'] = id
+
+        # Dk if good
+        return self.http.request('GET', self.host + "/gear/" + str(id), par, goiburuak)
