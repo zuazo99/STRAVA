@@ -1,5 +1,5 @@
 from StravaAPI import  stravaApiKud
-from Controller.DBKudeaketa import DBKud
+from Kontroladorea.DBKudeaketa import DBKud
 import datetime
 #Para seguir el patron MVC:
 #https://www.giacomodebidda.com/posts/mvc-pattern-in-python-sqlite/
