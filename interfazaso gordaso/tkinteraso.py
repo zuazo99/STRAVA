@@ -1,6 +1,9 @@
 import tkinter as tk
 from tkinter import ttk
-import controllers.DBKudeaketa.DBKud as db
+import Modeloa.DBKudeaketa.DBKud as db
+
+#Habria que sacar el modelo de esta clase nenes
+
 
 #https://www.tutorialesprogramacionya.com/pythonya/detalleconcepto.php?codigo=82
 #https://www.programadornovato.com/colocar-datos-de-nuestra-base-de-datos-en-nuestra-tabla-treeview-con-python-y-tkinter-06/

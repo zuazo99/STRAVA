@@ -1,5 +1,5 @@
-from controllers.StravaAPI import stravaApiKud
-from controllers.DBKudeaketa import DBKud
+from Modeloa.StravaAPI import stravaApiKud
+from Modeloa.DBKudeaketa import DBKud
 import datetime
 # kaixo
 
