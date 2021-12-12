@@ -43,6 +43,7 @@ class pantallitas:
 
     def material(self):
         print("Imprimimos debajo del botón el material que tenemos y cuantos km hemos hecho con ellos")
+        db.DBKudeaketa.materialaKontsultatu(self)
 
     def data_bidez_kontsulta(self):
         print("aaaaah")
@@ -69,4 +70,3 @@ class pantallitas:
         print(self.noiztik.get())
         print(self.nora.get())
 
-pantallitas()

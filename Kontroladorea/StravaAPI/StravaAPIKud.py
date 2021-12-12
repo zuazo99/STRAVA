@@ -18,7 +18,7 @@ class StravaAPIKud:
 
     def setConfigurationProperty(self, key, value):
         self.stravaConfig[key] = value
-        with open("StravaConfig.json", 'w') as outfile:
+        with open("../../StravaConfig.json", 'w') as outfile:
             json.dump(self.stravaConfig, outfile, indent=4, sort_keys=True)
 
     def getAccessToTheAPI(self):

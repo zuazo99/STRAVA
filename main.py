@@ -1,5 +1,6 @@
 from Kontroladorea.StravaAPI import stravaApiKud
 from Kontroladorea.DBKudeaketa import DBKud
+from Bista import tkinteraso as tk
 import datetime
 # kaixo
 
@@ -50,6 +51,7 @@ if __name__ == '__main__':
     print("4. Get ActivityStreams: ")
     print(" ")
     indizea = 1
+    self=0
     for aktibitatea in em:
         print(str(indizea) + ". Aktibitatea")
         print("IDa: " + str(aktibitatea["id"]))
@@ -132,3 +134,4 @@ if __name__ == '__main__':
         print(" --- ")
         print(" ")
     '''
+    tk.pantallitas()
