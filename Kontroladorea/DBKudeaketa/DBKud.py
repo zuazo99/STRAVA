@@ -136,7 +136,6 @@ class DBKudeaketa:
         query = "INSERT INTO Entrenamendua(ID, mota, data, km, denbora, ordua, entrErabId, erabilitakoMateriala) " \
                 "VALUES(?,?,?,?,?,?,?,?)"
         cursor.execute(query, datuak)
-        #cursor.execute(query, [id, izena, abizena])
         konexioa.commit()
         cursor.close()
         print("Ondo gordeta")
