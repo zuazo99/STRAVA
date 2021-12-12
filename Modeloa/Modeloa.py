@@ -1,4 +1,4 @@
-from StravaAPI import  stravaApiKud
+from StravaAPI import stravaApiKud
 from Kontroladorea.DBKudeaketa import DBKud
 import datetime
 #Para seguir el patron MVC:

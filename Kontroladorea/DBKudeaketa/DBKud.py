@@ -15,8 +15,6 @@ class DBKudeaketa:
             #Datuak kontsultatu
             #query = "SELECT ekipamenduMat FROM Erabiltzailea WHERE erabID = "AQUI METEMOS EL ERABILTZAILE @";";
 
-
-
             #El primer imput de data es data1 y el segundo data2
             #query = "SELECT * FROM Informazioa fecha BETWEEN 'data1' AND 'data2'";
             #sqlite_select_kontsulta ="select sqlite_version();"
@@ -25,11 +23,8 @@ class DBKudeaketa:
             #print(erantzuna)
             return sqliteConnection
 
-
         except sqlite3.Error as error:
-
-            print("Errorea konekzioa egiten sqlite")
-
+            print("Errorea konexioa egiten sqlite-rekin")
         #finally:
            #if sqliteConnection:
             #  sqliteConnection.close()
@@ -42,7 +37,7 @@ class DBKudeaketa:
             print("SQLite konexioa itzi egin da")
 
     '''
-        MATERIALA KUDEATU
+        ------------------------------- MATERIALA KUDEATU -------------------------------
     '''
 
     def materialaDagoenKonprobatu(self, datua):
@@ -87,7 +82,7 @@ class DBKudeaketa:
 
 
     '''
-        ATLETA KUDEATU
+        ------------------------------- ATLETA KUDEATU -------------------------------
     '''
 
     def atletaDagoenKonprobatu(self, id):
@@ -132,7 +127,7 @@ class DBKudeaketa:
         cursor.execute(query)
 
     '''
-            ENTRENAMENDUA KUDEATU
+        ------------------------------- ENTRENAMENDUA KUDEATU -------------------------------
     '''
 
     def EntrenamenduaSartu(self, datuak):
@@ -155,8 +150,8 @@ class DBKudeaketa:
         return len(erantzuna)
 
     '''
-                MEDIZIOAK KUDEATU
-        '''
+        ------------------------------- MEDIZIOAK KUDEATU -------------------------------
+    '''
 
     def medizioakSartu(self, datuak):
         konexioa=self.datuBaseKonexioa()
@@ -177,9 +172,9 @@ class DBKudeaketa:
         erantzuna = cursor.fetchall()
         return len(erantzuna)
 
-        '''
-                    SEGMENTUAK KUDEATU
-            '''
+    '''
+        ------------------------------- SEGMENTUAK KUDEATU -------------------------------
+    '''
     def SegmentuakSartu(self, datuak):
         konexioa=self.datuBaseKonexioa()
         cursor = konexioa.cursor()
@@ -198,3 +193,11 @@ class DBKudeaketa:
         cursor.execute(query, datuak)
         erantzuna = cursor.fetchall()
         return len(erantzuna)
+
+    '''
+        ------------------------------- KUDOS KUDEATU -------------------------------
+    '''
+
+    '''
+        ------------------------------- IRUZKINA KUDEATU -------------------------------
+    '''
