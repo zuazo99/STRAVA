@@ -168,3 +168,11 @@ class DBKudeaketa:
         konexioa.commit()
         cursor.close()
         print("Ondo gordeta")
+
+    def medizioakDagoenKonprobatu(self, id):
+        konexioa = self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = "SELECT idEntrenamendua FROM Medizioak WHERE idEntrenamendua = ? ;"
+        cursor.execute(query, [id])
+        erantzuna = cursor.fetchall()
+        return len(erantzuna)
