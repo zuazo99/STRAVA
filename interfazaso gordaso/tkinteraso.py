@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-import Modeloa.DBKudeaketa.DBKud as db
+import Controller.DBKudeaketa.DBKud as db
 
 #Habria que sacar el modelo de esta clase nenes
 
