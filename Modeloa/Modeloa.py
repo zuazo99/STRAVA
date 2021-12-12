@@ -77,7 +77,7 @@ class Modeloa:
                 ekipamenduMarca = ekipamendua['brand_name']
                 ekipamenduModelo = ekipamendua['model_name']
                 ekipamenduTot = ekipamenduMarca+" "+ekipamenduModelo
-
+            print(ekipamenduTot)
             datos = (aktibitatea["id"], aktibitatea['type'], data, kilometroak, denbora, ordua, atletaInfo['id'], ekipamenduTot)
             if DatuBasea.entrenamenduaDagoenKonprobatu(aktibitatea["id"]) == 0:
                 DatuBasea.EntrenamenduaSartu(datos)
