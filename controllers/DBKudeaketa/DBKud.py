@@ -176,3 +176,25 @@ class DBKudeaketa:
         cursor.execute(query, [id])
         erantzuna = cursor.fetchall()
         return len(erantzuna)
+
+        '''
+                    SEGMENTUAK KUDEATU
+            '''
+    def SegmentuakSartu(self, datuak):
+        konexioa=self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = "INSERT INTO Segmentua(izena, denbora, idEntrenamendua, distantzia) " \
+                "VALUES(?,?,?,?)"
+        cursor.execute(query, datuak)
+        #cursor.execute(query, [id, izena, abizena])
+        konexioa.commit()
+        cursor.close()
+        print("Ondo gordeta")
+
+    def SegmentuakDagoenKonprobatu(self, datuak):
+        konexioa = self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = "SELECT izena,denbora FROM Segmentua WHERE izena = ? AND denbora = ? ;"
+        cursor.execute(query, datuak)
+        erantzuna = cursor.fetchall()
+        return len(erantzuna)

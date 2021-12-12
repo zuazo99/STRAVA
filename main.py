@@ -84,6 +84,29 @@ if __name__ == '__main__':
         medizioak = (latilng, aktibitatea['average_speed'], aktibitatea['average_heartrate'], data, ordua, aktibitatea["id"])
         if DatuBasea.medizioakDagoenKonprobatu(aktibitatea["id"]):
             DatuBasea.medizioakSartu(medizioak)
+        aktibitateaID = stravaApiKud.getActivietesById(aktibitatea["id"])
+        print()
+        '''
+        SEGMENTUAK LORTU
+        '''
+        print("ID segmentua:", aktibitateaID['id'])
+        print("Kudos:", aktibitateaID['kudos_count'])
+        if not aktibitateaID['segment_efforts']:
+            print("Segmentua hutsik dago")
+        else:
+
+            print("Segmentua ID:", aktibitateaID['segment_efforts'])
+            print("Segmentua izena:", aktibitateaID['segment_efforts'][0]['name'])
+            denboraSegmentua = str(datetime.timedelta(seconds=aktibitateaID['segment_efforts'][0]['elapsed_time']))
+            print("Segmentua denbora:", denboraSegmentua)
+            distantziaSegmentua = aktibitateaID['segment_efforts'][0]['distance']/1000
+            print("Segmentua distantzia:", distantziaSegmentua)
+            print("ID aktibitatea")
+
+            datosSegmentua = (aktibitateaID['segment_efforts'][0]['name'], denboraSegmentua, aktibitatea["id"], distantziaSegmentua)
+            datosSegmentoKomprobatu = (aktibitateaID['segment_efforts'][0]['name'], denboraSegmentua)
+            if DatuBasea.SegmentuakDagoenKonprobatu(datosSegmentoKomprobatu) == 0:
+                DatuBasea.SegmentuakSartu(datosSegmentua)
 
         indizea = indizea + 1
         print(" ")
