@@ -197,7 +197,40 @@ class DBKudeaketa:
     '''
         ------------------------------- KUDOS KUDEATU -------------------------------
     '''
+    def KudosSartu(self, datuak):
+        konexioa=self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        #query = ";";
+        cursor.execute(query, datuak)
+        #cursor.execute(query, [id, izena, abizena])
+        konexioa.commit()
+        cursor.close()
+        print("Ondo gordeta")
 
+    def KudosKonprobatu(self, datuak):
+        konexioa = self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        #query = ";";
+        cursor.execute(query, datuak)
+        erantzuna = cursor.fetchall()
+        return len(erantzuna)
     '''
         ------------------------------- IRUZKINA KUDEATU -------------------------------
     '''
+    def IruzkinaKudeatu(self, datuak):
+        konexioa=self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = "INSERT INTO Iruzkina(id, testua) VALUES (?,?)";
+        cursor.execute(query, datuak)
+        #cursor.execute(query, [id, izena, abizena])
+        konexioa.commit()
+        cursor.close()
+        print("Ondo gordeta")
+
+    def IruzkinaKonprobatu(self, datuak):
+        konexioa = self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = "SELECT * FROM Iruzkina WHERE id = ? AND testua = ?;";
+        cursor.execute(query, datuak)
+        erantzuna = cursor.fetchall()
+        return len(erantzuna)

@@ -17,7 +17,7 @@ class pantallitas:
         self.cuaderno=ttk.Notebook(self.window)
         print("entra login")
         self.datuak_freskatu()
-        self.materiala_kontzultatu()
+        self.materiala_kontsultatu()
         self.data_bidez_kontsulta()
         print("sale de login")
         self.cuaderno.grid(column=0, row=0, padx=10, pady=10)
@@ -34,7 +34,7 @@ class pantallitas:
         print("Aqui cogemos los 30 ultimos eventos de la api de strava y si no están ya metidos en la db los añadimos, si están pasamos")
 
 
-    def materiala_kontzultatu(self):
+    def materiala_kontsultatu(self):
         print("aaaaah")
         self.pagina2 = ttk.Frame(self.cuaderno)
         self.cuaderno.add(self.pagina2, text="Materiala kontsultatu")
@@ -60,10 +60,10 @@ class pantallitas:
         self.nora = tk.StringVar()
         self.entryNora = ttk.Entry(self.labelframe3, textvariable=self.nora)
         self.entryNora.grid(column=1, row=1, padx=4, pady=4)
-        self.boton1 = ttk.Button(self.labelframe3, text="Balioztatu", command=self.kontz_data)
+        self.boton1 = ttk.Button(self.labelframe3, text="Balioztatu", command=self.konts_data)
         self.boton1.grid(column=1, row=2, padx=4, pady=4)
 
-    def kontz_data(self):
+    def konts_data(self):
         print("imprimimos las actividades hechas entre las fechas seleccionadas")
         #SELECT * FROM entrenamientos WHERE data BETWEEN %noiztik AND %nora
         print(self.noiztik.get())
