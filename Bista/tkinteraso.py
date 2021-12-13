@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import Kontroladorea.DBKudeaketa.DBKud as db
+from . import Leioa
 
 #Habria que sacar el modelo de esta clase nenes
 
@@ -9,7 +10,8 @@ import Kontroladorea.DBKudeaketa.DBKud as db
 #https://www.programadornovato.com/colocar-datos-de-nuestra-base-de-datos-en-nuestra-tabla-treeview-con-python-y-tkinter-06/
 
 class pantallitas:
-    def init(self):
+
+    def __init__(self):
         self.datuak=db.DBKudeaketa()
         print("pasa de datuak")
         self.window=tk.Tk()
@@ -43,29 +45,14 @@ class pantallitas:
 
     def material(self):
         print("Imprimimos debajo del botón el material que tenemos y cuantos km hemos hecho con ellos")
-        mat = self.datuak.materialKmLortu()
-        print(mat)
-        self.leioaMat(mat)
+        self.material = self.datuak.materialKmLortu()
+        self.goiburuak = ["Ekipamendua", "KM-ak"]
+        self.datuak = []
+        for self.mat in self.material:
+            self.datuak.append([self.mat[1], self.mat[0]])
+        print(self.datuak)
+        Leioa.Leioa(self.goiburuak, self.datuak)
 
-    def leioaMat(self,mat):
-        self.window = tk.Tk()
-        self.window.title("Erabilitako materiala")
-        goiburuak = ["Ekipamendua", "KM-ak"]
-        datuak = mat
-        #for mat in datuak:
-        #    datuak.append(mat[1],mat[0])
-
-        self.taula.bind("<Double-1>", lambda ev: print(self.taula.selection()))
-        ## Goiburu izenak sartu egiten dira.
-        for i, g in enumerate(goiburuak):
-            self.taula.column(f"#{i}", minwidth=0, width=200)
-            self.taula.heading(i, text=g)
-        ## Datuak taulan zartu
-        for i, d in enumerate(datuak):
-            self.taula.insert(parent='', index=i, iid=i, values=d)
-
-        self.taula.pack()
-        self.window.mainloop()
 
 
     def data_bidez_kontsulta(self):
@@ -92,5 +79,15 @@ class pantallitas:
         #SELECT * FROM entrenamientos WHERE data BETWEEN %noiztik AND %nora
         print(self.noiztik.get())
         print(self.nora.get())
-        datak = (self.noiztik.get(), self.nora.get())
-        self.datuak.entrenamenduaDatenArteanLortu(datak)
+        self.datak = []
+        self.datak.append(self.noiztik.get())
+        self.datak.append(self.nora.get())
+        print(self.datak)
+        entr = self.datuak.entrenamenduaDatenArteanLortu(datak)
+        self.goiburuak = ["ID", "mota", "data", "km", "denbora", "ordua", "Erabiltzailearen Id-a", "Erabilitako materiala"]
+        self.datuak = []
+        for mat in entr:
+            self.datuak.append([self.mat[0], self.mat[1], self.mat[2],self.mat[3], self.mat[4], self.mat[5], self.mat[6], self.mat[7]])
+        Leioa.Leioa(self.goiburuak, self.datuak)
+
+pantallitas()
