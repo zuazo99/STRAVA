@@ -300,3 +300,25 @@ class DBKudeaketa:
         cursor.execute(query, datuak)
         erantzuna = cursor.fetchall()
         return len(erantzuna)
+
+    '''
+        BUELTAK KUDEATU
+    '''
+
+    def BueltaSartu(self, datuak):
+        konexioa=self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = "INSERT INTO Buelta(index, izena, denbora, km, abiaduraMax, erritmoa, entrenaID) " \
+                "VALUES(?,?,?,?,?,?,?)"
+        cursor.execute(query, datuak)
+        konexioa.commit()
+        cursor.close()
+        print("Ondo gordeta")
+
+    def BueltaDagoenKonprobatu(self, datuak):
+        konexioa = self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = "SELECT index FROM Buelta WHERE index = ? ;"
+        cursor.execute(query, [datuak])
+        erantzuna = cursor.fetchall()
+        return len(erantzuna)
