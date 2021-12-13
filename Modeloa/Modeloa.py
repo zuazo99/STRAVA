@@ -45,13 +45,7 @@ class Modeloa:
         print("2. Get AthleteActivities: ")
         print(" ")
         em = stravaApiKud.getAthleteActivities() #Returns the activities of an athlete. [{"resource_state : 2, "athlete : {"id" : 1234}, "id" : 123456}]
-        print(em)
 
-        print(" ")
-        print("3. Get ActivityById: ")
-        print(" ")
-        print("4. Get ActivityStreams: ")
-        print(" ")
         indizea = 1
         for aktibitatea in em:
             print(str(indizea) + ". Aktibitatea")
