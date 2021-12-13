@@ -190,9 +190,19 @@ class DBKudeaketa:
     def entrenamenduaIDLortu(self, id):
         konexioa = self.datuBaseKonexioa()
         cursor = konexioa.cursor()
-        query = "SELECT * FROM Entrenamendua WHERE id = ? ;"
+        self.erantzuna = []
+        query = "SELECT e.* FROM Entrenamendua AS e WHERE e.ID = ? ;"
         cursor.execute(query, id)
-        erantzuna = cursor.fetchall()
+        self.erantzuna.append(cursor.fetchall())
+        query = "SELECT b.* FROM Entrenamendua AS e, Buelta AS b WHERE b.entreData = e.data, m.entreOrdua = e.ordua AND e.ID = ?;"
+        cursor.execute(query, id)
+        self.erantzuna.append(cursor.fetchall())
+        query = "SELECT m.posizioa, m.AVG(abiadura), m.AV(pultsazioak), m.entreOrdua, m.entreData , idEntrenamendua FROM Medizioak AS m WHERE m.idEntrenamendua = ? ;"
+        cursor.execute(query, id)
+        self.erantzuna.append(cursor.fetchall())
+        query = "SELECT s.* FROM Segmentua AS s WHERE s.idEntrenamendua= ? ;"
+        cursor.execute(query, id)
+        self.erantzuna.append(cursor.fetchall())
         return erantzuna
 
     def entrenamenduaUpdate(self, datuak):
