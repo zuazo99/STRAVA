@@ -155,8 +155,8 @@ class Modeloa:
                     print("entrenaID", buelta['activity']['id'])
 
                     bueltaDatuak = (buelta['lap_index'], buelta['name'], denboraBuelta, kilometroak, buelta['max_speed'], buelta['average_speed'], buelta['activity']['id'])
-                    if DatuBasea.BueltaDagoenKonprobatu(buelta['lap_index']) == 0:
-                        DatuBasea.BueltaSartu(bueltaDatuak)
+                    #if DatuBasea.BueltaDagoenKonprobatu(buelta['lap_index']) == 0:
+                    DatuBasea.BueltaSartu(bueltaDatuak)
 
             indizea = indizea + 1
             print(" ")
