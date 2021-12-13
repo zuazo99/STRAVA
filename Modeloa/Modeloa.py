@@ -105,13 +105,15 @@ class Modeloa:
             latilng=' '.join(str(e) for e in aktibitatea['start_latlng'])
 
 
-            medizioak = (latilng, aktibitatea['average_speed'], aktibitatea['average_heartrate'], data, ordua, aktibitatea["id"])
+            #medizioak = (latilng, aktibitatea['average_speed'], aktibitatea['average_heartrate'], data, ordua, aktibitatea["id"])
+            medizioakUpdate = (latilng, aktibitatea['average_speed'], aktibitatea['average_heartrate'], data, ordua, aktibitatea["id"], aktibitatea["id"])
+            DatuBasea.medizioakUpdate(medizioakUpdate)
 
-
+            '''
             if DatuBasea.medizioakDagoenKonprobatu(aktibitatea["id"]):
                 DatuBasea.medizioakSartu(medizioak)
+            '''
            # aktibitateaID = stravaApiKud.getActivietesById(aktibitatea["id"])
-            print()
             '''
             SEGMENTUAK LORTU
             '''

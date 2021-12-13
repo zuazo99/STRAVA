@@ -91,6 +91,16 @@ class DBKudeaketa:
 
         print("+{:-<50}+".format(""))
 
+    def materialKmLortu(self):
+
+        konexioa = self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = "SELECT SUM(KM),erabilitakoMateriala FROM Entrenamendua GROUP BY erabilitakoMateriala ;"
+        cursor.execute(query)
+        erantzuna = cursor.fetchall()
+        return erantzuna
+
+
 
     '''
         ------------------------------- ATLETA KUDEATU -------------------------------
@@ -212,7 +222,7 @@ class DBKudeaketa:
     def medizioakUpdate(self, datuak):
         konexioa = self.datuBaseKonexioa()
         cursor = konexioa.cursor()
-        query = "UPDATE Medizioak SET ID = ?, mota = ?, data = ?, km = ?, denbora = ?, ordua = ?, entrErabId = ?, erabilitakoMateriala = ? WHERE id = ?;"
+        query = "UPDATE Medizioak SET posizioa = ?, abiadura = ?, pultsazioak = ?, entreData = ?, entreOrdua = ?, idEntrenamendua = ? WHERE idEntrenamendua = ? ;"
         cursor.execute(query, datuak)
         konexioa.commit()
         cursor.close()
