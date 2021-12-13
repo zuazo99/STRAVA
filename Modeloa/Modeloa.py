@@ -158,6 +158,7 @@ class Modeloa:
                     #if DatuBasea.BueltaDagoenKonprobatu(buelta['lap_index']) == 0:
                     DatuBasea.BueltaSartu(bueltaDatuak)
 
+
             indizea = indizea + 1
             print(" ")
             '''
