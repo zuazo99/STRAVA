@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 import Kontroladorea.DBKudeaketa.DBKud as db
 from . import Leioa
+from . import MapaLortu
 import Modeloa.Modeloa as mod
 #import Leioa
 
@@ -107,5 +108,9 @@ class pantallitas:
         self.id = self.idtag.get()
         print(self.id)
         self.entr = self.datuak.entrenamenduaIDLortu(self.id)
+
+        #habría que replantear una buena parte de la BBDD y el resto del programa... pero habrian sido unos buenos 7 puntitos extra
+        #self.polyline = self.entr
+        #MapaLortu.Leioa.__init__(self.polyline)
 
 #pantallitas()
