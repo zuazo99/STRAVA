@@ -183,7 +183,7 @@ class DBKudeaketa:
         konexioa = self.datuBaseKonexioa()
         cursor = konexioa.cursor()
         query = "SELECT * FROM Entrenamendua WHERE data BETWEEN ? AND ? ;"
-        cursor.execute(query, [datak])
+        cursor.execute(query, datak)
         erantzuna = cursor.fetchall()
         return erantzuna
 
@@ -249,6 +249,16 @@ class DBKudeaketa:
         cursor.execute(query, datuak)
         erantzuna = cursor.fetchall()
         return len(erantzuna)
+
+    def SegmentuakUpdate(self, datuak):
+        konexioa = self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = "UPDATE Segmentua SET izena = ?, denbora = ?, idEntrenamendua = ?, distantzia = ? WHERE idEntrenamendua = ? ;"
+        cursor.execute(query, datuak)
+        konexioa.commit()
+        cursor.close()
+        print("Ondo aldatuta")
+
 
     '''
         ------------------------------- KUDOS KUDEATU -------------------------------
