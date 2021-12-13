@@ -9,7 +9,7 @@ import Kontroladorea.DBKudeaketa.DBKud as db
 #https://www.programadornovato.com/colocar-datos-de-nuestra-base-de-datos-en-nuestra-tabla-treeview-con-python-y-tkinter-06/
 
 class pantallitas:
-    def __init__(self):
+    def init(self):
         self.datuak=db.DBKudeaketa()
         print("pasa de datuak")
         self.window=tk.Tk()
@@ -43,7 +43,31 @@ class pantallitas:
 
     def material(self):
         print("Imprimimos debajo del botón el material que tenemos y cuantos km hemos hecho con ellos")
-        self.datuak.materialaKontsultatu()
+        mat = self.datuak.materialKmLortu()
+        print(mat)
+        #self.leioaMat(mat)
+
+    def leioaMat(self,mat):
+        self.window = tk.Tk()
+        self.window.title("Erabilitako materiala")
+        goiburuak = ["Ekipamendua", "KM-ak"]
+        datuak = [
+            [mat, "15 min"],
+            ["izena2", "12 min", "12km/h"],
+            ["izena3", "13 min", "11km/h"]
+        ]
+
+        self.taula.bind("<Double-1>", lambda ev: print(self.taula.selection()))
+        ## Goiburu izenak sartu egiten dira.
+        for i, g in enumerate(goiburuak):
+            self.taula.column(f"#{i}", minwidth=0, width=200)
+            self.taula.heading(i, text=g)
+        ## Datuak taulan zartu
+        for i, d in enumerate(datuak):
+            self.taula.insert(parent='', index=i, iid=i, values=d)
+
+        self.taula.pack()
+        self.window.mainloop()
 
 
     def data_bidez_kontsulta(self):
@@ -72,5 +96,3 @@ class pantallitas:
         print(self.nora.get())
         datak = (self.noiztik.get(), self.nora.get())
         self.datuak.entrenamenduaDatenArteanLortu(datak)
-
-pantallitas()
