@@ -67,7 +67,7 @@ class Modeloa:
             ekipamenduaID = aktibitateaID['gear_id']
             ekipamenduTot = "A"
             if ekipamenduaID is None:
-                ekipamenduTot = "X"
+                ekipamenduTot = "Gorde gabeko ekipamendua"
 
             else:
                 ekipamendua = stravaApiKud.getGearsById(ekipamenduaID)

@@ -6,7 +6,15 @@ class Leioa():
     def __init__(self, goiburuak, datuak):
         self.window = tk.Tk()
         self.window.title("Erabilitako materiala")
-        self.taula = ttk.Treeview(self.window, columns=(0, 1, 2), show='headings')
+        scroll = ScrollContainer(self.window)
+        self.main_frame = scroll.second_frame
+
+        if len(goiburuak)==2:
+            self.taula = ttk.Treeview(self.main_frame, columns=(0, 1), show='headings')
+        elif len(goiburuak)==8:
+            self.taula = ttk.Treeview(self.main_frame, columns=(0, 1, 2, 3, 4, 5, 6, 7, 8), show='headings')
+        else:
+            self.taula = ttk.Treeview(self.main_frame, columns=(0, 1, 2), show='headings')
         self.taula.bind("<Double-1>", lambda ev: print(self.taula.selection()))
         ## Goiburu izenak sartu egiten dira.
         for i, g in enumerate(goiburuak):
