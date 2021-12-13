@@ -18,22 +18,22 @@ class Modeloa:
         print(" ")
         atletaInfo = stravaApiKud.getAthlete()
         print(stravaApiKud.getAthlete()) #Atletaren informazioa lortu. {'id': 61350307, 'firstname' : 'Mikel'....}
-        print(atletaInfo)
         print("ID_Atleta: ", atletaInfo['id'])
-        print("Atleta ID_Materiala:", atletaInfo['shoes'][0]['id'])
-        print("Materiala izena:", atletaInfo['shoes'][0]['name'])
-        print("Bizikleta datuak", atletaInfo['bikes'])
-
-        DatuBasea.materialaUpdate(atletaInfo['shoes'][0]['name'])
-
+        #print("Atleta ID_Materiala:", atletaInfo['shoes'][0]['id'])
+        #print("Materiala izena:", atletaInfo['shoes'][0]['name'])
+        #print("Bizikleta datuak", atletaInfo['bikes'])
         '''
+        if atletaInfo['shoes'][0]['name'] is not None:
+            DatuBasea.materialaUpdate(atletaInfo['shoes'][0]['name'])
+
+        
         if DatuBasea.materialaDagoenKonprobatu(atletaInfo['shoes'][0]['name']) == 0:
             DatuBasea.materialaSartu(atletaInfo['shoes'][0]['name'])
         '''
 
-        datuakAtleta = (atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'], atletaInfo['shoes'][0]['name'])
+        #datuakAtleta = (atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'], atletaInfo['shoes'][0]['name'])
 
-        datuakAtletaUpdate = (atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'], "las naikis", atletaInfo['id'])
+        datuakAtletaUpdate = (atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'], atletaInfo['shoes'][0]['name'], atletaInfo['id'])
         DatuBasea.atletaUpdate(datuakAtletaUpdate)
 
         '''
@@ -62,14 +62,13 @@ class Modeloa:
             denbora = str(datetime.timedelta(seconds=aktibitatea['elapsed_time']))
             print("denbora", denbora)
             print("erabID", atletaInfo['id'])
-            #print("polyline", aktibitatea['map']['polyline'])
 
             aktibitateaID = stravaApiKud.getActivietesById(aktibitatea["id"])
             print("Ekipamendua ID:", aktibitateaID['gear_id'])
             ekipamenduaID = aktibitateaID['gear_id']
             ekipamenduTot = "A"
             if ekipamenduaID is None:
-                ekipamenduTot = "Gorde gabeko ekipamendua"
+                ekipamenduTot = "X"
 
             else:
                 ekipamendua = stravaApiKud.getGearsById(ekipamenduaID)
@@ -133,7 +132,7 @@ class Modeloa:
             '''
                 BUELTAK LORTU
             '''
-            '''
+
             if not aktibitateaID['laps']:
                 print("Aktibitatea ez ditu bueltarik")
             else:
@@ -155,7 +154,7 @@ class Modeloa:
                     bueltaKonprobatu = (buelta['name'], buelta['activity']['id'])
                     if DatuBasea.BueltaDagoenKonprobatu(bueltaKonprobatu) == 0:
                         DatuBasea.BueltaSartu(bueltaDatuak)
-            '''
+
 
             indizea = indizea + 1
             print(" ")
