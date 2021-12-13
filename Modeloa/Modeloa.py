@@ -61,6 +61,7 @@ class Modeloa:
             denbora = str(datetime.timedelta(seconds=aktibitatea['elapsed_time']))
             print("denbora", denbora)
             print("erabID", atletaInfo['id'])
+            print("polyline", aktibitatea['map']['polyline'])
 
             aktibitateaID = stravaApiKud.getActivietesById(aktibitatea["id"])
             print("Ekipamendua ID:", aktibitateaID['gear_id'])
