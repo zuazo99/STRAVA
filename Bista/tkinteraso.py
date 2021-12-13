@@ -90,4 +90,4 @@ class pantallitas:
             self.datuak.append([self.mat[0], self.mat[1], self.mat[2],self.mat[3], self.mat[4], self.mat[5], self.mat[6], self.mat[7]])
         Leioa.Leioa(self.goiburuak, self.datuak)
 
-pantallitas()
+#pantallitas()
