@@ -83,10 +83,10 @@ class pantallitas:
         self.datak.append(self.noiztik.get())
         self.datak.append(self.nora.get())
         print(self.datak)
-        entr = self.datuak.entrenamenduaDatenArteanLortu(datak)
+        self.entr = self.datuak.entrenamenduaDatenArteanLortu(datak)
         self.goiburuak = ["ID", "mota", "data", "km", "denbora", "ordua", "Erabiltzailearen Id-a", "Erabilitako materiala"]
         self.datuak = []
-        for mat in entr:
+        for self.mat in self.entr:
             self.datuak.append([self.mat[0], self.mat[1], self.mat[2],self.mat[3], self.mat[4], self.mat[5], self.mat[6], self.mat[7]])
         Leioa.Leioa(self.goiburuak, self.datuak)
 
