@@ -187,6 +187,14 @@ class DBKudeaketa:
         erantzuna = cursor.fetchall()
         return erantzuna
 
+    def entrenamenduaIDLortu(self, id):
+        konexioa = self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = "SELECT * FROM Entrenamendua WHERE id = ? ;"
+        cursor.execute(query, id)
+        erantzuna = cursor.fetchall()
+        return erantzuna
+
     def entrenamenduaUpdate(self, datuak):
         konexioa = self.datuBaseKonexioa()
         cursor = konexioa.cursor()

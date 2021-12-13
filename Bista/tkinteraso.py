@@ -2,6 +2,8 @@ import tkinter as tk
 from tkinter import ttk
 import Kontroladorea.DBKudeaketa.DBKud as db
 from . import Leioa
+import Modeloa.Modeloa as mod
+#import Leioa
 
 #Habria que sacar el modelo de esta clase nenes
 
@@ -34,7 +36,8 @@ class pantallitas:
 
     def freskatu(self):
         print("Aqui cogemos los 30 ultimos eventos de la api de strava y si no están ya metidos en la db los añadimos, si están pasamos")
-
+        mod.main()
+        self.label = ttk.Label(self.labelframe1, text="Eguneraketa egin da")
 
     def materiala_kontsultatu(self):
         print("aaaaah")
@@ -74,6 +77,16 @@ class pantallitas:
         self.boton1 = ttk.Button(self.labelframe3, text="Balioztatu", command=self.konts_data)
         self.boton1.grid(column=1, row=2, padx=4, pady=4)
 
+        self.labelframe4 = ttk.LabelFrame(self.pagina3, text="Tartea")
+        self.labelframe4.grid(column=1, row=0, padx=5, pady=10)
+        self.label3 = ttk.Label(self.labelframe4, text="Kontsultatu nahi duzun ID-a:")
+        self.label3.grid(column=0, row=0, padx=4, pady=4)
+        self.idtag = tk.StringVar()
+        self.entryID = ttk.Entry(self.labelframe4, textvariable=self.idtag)
+        self.entryID.grid(column=1, row=0, padx=4, pady=4)
+        self.boton2 = ttk.Button(self.labelframe4, text="Balioztatu", command=self.konts_id)
+        self.boton2.grid(column=1, row=2, padx=4, pady=4)
+
     def konts_data(self):
         print("imprimimos las actividades hechas entre las fechas seleccionadas")
         #SELECT * FROM entrenamientos WHERE data BETWEEN %noiztik AND %nora
@@ -89,5 +102,10 @@ class pantallitas:
         for self.mat in self.entr:
             self.datuak.append([self.mat[0], self.mat[1], self.mat[2],self.mat[3], self.mat[4], self.mat[5], self.mat[6], self.mat[7]])
         Leioa.Leioa(self.goiburuak, self.datuak)
+
+    def konts_id(self):
+        self.id = self.idtag.get()
+        print(self.id)
+        self.entr = self.datuak.entrenamenduaIDLortu(self.id)
 
 #pantallitas()
