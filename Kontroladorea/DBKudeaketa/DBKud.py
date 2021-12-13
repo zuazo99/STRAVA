@@ -253,7 +253,7 @@ class DBKudeaketa:
     def SegmentuakUpdate(self, datuak):
         konexioa = self.datuBaseKonexioa()
         cursor = konexioa.cursor()
-        query = "UPDATE Segmentua SET izena = ?, denbora = ?, idEntrenamendua = ?, distantzia = ? WHERE idEntrenamendua = ? ;"
+        query = "UPDATE Segmentua SET izena = ?, denbora = ?, idEntrenamendua = ?, distantzia = ? WHERE idEntrenamendua = ?,  ;"
         cursor.execute(query, datuak)
         konexioa.commit()
         cursor.close()
