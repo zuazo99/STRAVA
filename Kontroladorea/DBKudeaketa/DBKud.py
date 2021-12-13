@@ -56,6 +56,16 @@ class DBKudeaketa:
         konexioa.commit()
         print("Materiala ondo gordeta")
 
+    def materialaUpdate(self, datua):
+        konexioa = self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = "UPDATE Ekipamendua SET materiala = ?  ;"
+        cursor.execute(query, [datua])
+        konexioa.commit()
+        cursor.close()
+        print("Ondo aldatuta")
+
+
     def materialaEzabatu(self):
         konexioa = self.datuBaseKonexioa()
         cursor = konexioa.cursor()
@@ -63,6 +73,7 @@ class DBKudeaketa:
         cursor.execute(query)
         konexioa.commit()
         print("Ondo ezabatu da")
+
 
     def materialaKontsultatu(self):
         konexioa = self.datuBaseKonexioa()
@@ -102,6 +113,16 @@ class DBKudeaketa:
         konexioa.commit()
         cursor.close()
         print("Ondo gordeta")
+
+    def atletaUpdate(self, datuak):
+        konexioa = self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = "UPDATE Erabiltzailea SET erabID = ?, izena = ?, abizena = ?, ekipamenduMat = ? WHERE erabID = ? ;"
+        cursor.execute(query, datuak)
+        konexioa.commit()
+        cursor.close()
+        print("Ondo aldatuta")
+
 
     def atletaKontsultatu(self):
         konexioa = self.datuBaseKonexioa()
@@ -148,19 +169,21 @@ class DBKudeaketa:
         erantzuna = cursor.fetchall()
         return len(erantzuna)
 
-    def entrenamenduaUpdate(self):
+    def entrenamenduaUpdate(self, datuak):
         konexioa = self.datuBaseKonexioa()
         cursor = konexioa.cursor()
-        query = "UPDATE ;"
-        cursor.execute(query, [id])
-        erantzuna = cursor.fetchall()
+        query = "UPDATE Entrenamendua SET ID = ?, mota = ?, data = ?, km = ?, denbora = ?, ordua = ?, entrErabId = ?, erabilitakoMateriala = ? WHERE id = ?;"
+        cursor.execute(query, datuak)
+        konexioa.commit()
+        cursor.close()
+        print("Ondo aldatuta")
 
     '''
         ------------------------------- MEDIZIOAK KUDEATU -------------------------------
     '''
 
     def medizioakSartu(self, datuak):
-        konexioa=self.datuBaseKonexioa()
+        konexioa = self.datuBaseKonexioa()
         cursor = konexioa.cursor()
         query = "INSERT INTO Medizioak(posizioa, abiadura, pultsazioak, entreData, entreOrdua, idEntrenamendua) " \
                 "VALUES(?,?,?,?,?,?)"
@@ -177,6 +200,15 @@ class DBKudeaketa:
         cursor.execute(query, [id])
         erantzuna = cursor.fetchall()
         return len(erantzuna)
+
+    def medizioakUpdate(self, datuak):
+        konexioa = self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = "UPDATE Medizioak SET ID = ?, mota = ?, data = ?, km = ?, denbora = ?, ordua = ?, entrErabId = ?, erabilitakoMateriala = ? WHERE id = ?;"
+        cursor.execute(query, datuak)
+        konexioa.commit()
+        cursor.close()
+        print("Ondo aldatuta")
 
     '''
         ------------------------------- SEGMENTUAK KUDEATU -------------------------------

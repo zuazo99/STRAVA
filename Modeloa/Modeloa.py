@@ -6,12 +6,9 @@ import datetime
 
 class Modeloa:
     def main(self):
-        print(" ")
-        print("Konexioa egiten APIarekin: ")
-        print(" ")
+
         DatuBasea = DBKud.DBKudeaketa()
         stravaApiKud = StravaAPIKud.StravaAPIKud()
-        print("Datu Basearekin konexioa:")
         DatuBasea.datuBaseKonexioa()
 
         #API-ra konektatzeko.
@@ -26,15 +23,23 @@ class Modeloa:
         print("Materiala izena:", atletaInfo['shoes'][0]['name'])
         print("Bizikleta datuak", atletaInfo['bikes'])
 
+        DatuBasea.materialaUpdate(atletaInfo['shoes'][0]['name'])
+
+        '''
         if DatuBasea.materialaDagoenKonprobatu(atletaInfo['shoes'][0]['name']) == 0:
             DatuBasea.materialaSartu(atletaInfo['shoes'][0]['name'])
-        DatuBasea.materialaKontsultatu()
+        '''
 
-        datuakAtleta = (atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'], atletaInfo['shoes'][0]['name'])
+        #datuakAtleta = (atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'], atletaInfo['shoes'][0]['name'])
 
+        datuakAtletaUpdate = (atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'], atletaInfo['shoes'][0]['name'], atletaInfo['id'])
+        DatuBasea.atletaUpdate(datuakAtletaUpdate)
+
+        '''
         if DatuBasea.atletaDagoenKonprobatu(atletaInfo['id']) == 0:
             DatuBasea.atletaSartu(datuakAtleta)
         DatuBasea.atletaKontsultatu()
+        '''
 
         print(" ")
         print("2. Get AthleteActivities: ")
@@ -78,9 +83,15 @@ class Modeloa:
                 ekipamenduModelo = ekipamendua['model_name']
                 ekipamenduTot = ekipamenduMarca+" "+ekipamenduModelo
             print(ekipamenduTot)
-            datos = (aktibitatea["id"], aktibitatea['type'], data, kilometroak, denbora, ordua, atletaInfo['id'], ekipamenduTot)
-            if DatuBasea.entrenamenduaDagoenKonprobatu(aktibitatea["id"]) == 0:
-                DatuBasea.EntrenamenduaSartu(datos)
+            #datos = (aktibitatea["id"], aktibitatea['type'], data, kilometroak, denbora, ordua, atletaInfo['id'], ekipamenduTot)
+            datosUpdate = (aktibitatea["id"], aktibitatea['type'], data, kilometroak, denbora, ordua, atletaInfo['id'], ekipamenduTot, aktibitatea["id"])
+            DatuBasea.entrenamenduaUpdate(datosUpdate)
+            '''
+                if DatuBasea.entrenamenduaDagoenKonprobatu(aktibitatea["id"]) == 0:
+                    DatuBasea.EntrenamenduaSartu(datos)
+                    
+            '''
+
 
             if aktibitatea['has_heartrate'] is False:
                 aktibitatea['average_heartrate'] = 0.0
@@ -95,6 +106,8 @@ class Modeloa:
 
 
             medizioak = (latilng, aktibitatea['average_speed'], aktibitatea['average_heartrate'], data, ordua, aktibitatea["id"])
+
+
             if DatuBasea.medizioakDagoenKonprobatu(aktibitatea["id"]):
                 DatuBasea.medizioakSartu(medizioak)
            # aktibitateaID = stravaApiKud.getActivietesById(aktibitatea["id"])
@@ -125,6 +138,7 @@ class Modeloa:
             '''
                 BUELTAK LORTU
             '''
+
             indizea = indizea + 1
             print(" ")
             '''
