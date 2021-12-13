@@ -45,17 +45,15 @@ class pantallitas:
         print("Imprimimos debajo del botón el material que tenemos y cuantos km hemos hecho con ellos")
         mat = self.datuak.materialKmLortu()
         print(mat)
-        #self.leioaMat(mat)
+        self.leioaMat(mat)
 
     def leioaMat(self,mat):
         self.window = tk.Tk()
         self.window.title("Erabilitako materiala")
         goiburuak = ["Ekipamendua", "KM-ak"]
-        datuak = [
-            [mat, "15 min"],
-            ["izena2", "12 min", "12km/h"],
-            ["izena3", "13 min", "11km/h"]
-        ]
+        datuak = mat
+        #for mat in datuak:
+        #    datuak.append(mat[1],mat[0])
 
         self.taula.bind("<Double-1>", lambda ev: print(self.taula.selection()))
         ## Goiburu izenak sartu egiten dira.
