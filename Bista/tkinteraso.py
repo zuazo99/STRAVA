@@ -45,6 +45,7 @@ class pantallitas:
         print("Imprimimos debajo del botón el material que tenemos y cuantos km hemos hecho con ellos")
         self.datuak.materialaKontsultatu()
 
+
     def data_bidez_kontsulta(self):
         print("aaaaah")
         self.pagina3 = ttk.Frame(self.cuaderno)
