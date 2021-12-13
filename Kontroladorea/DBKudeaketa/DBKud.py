@@ -308,8 +308,8 @@ class DBKudeaketa:
     def BueltaSartu(self, datuak):
         konexioa=self.datuBaseKonexioa()
         cursor = konexioa.cursor()
-        query = "INSERT INTO Buelta(index, izena, denbora, km, abiaduraMax, erritmoa, entrenaID) " \
-                "VALUES(?,?,?,?,?,?,?)"
+        query = "INSERT INTO Buelta(izena, denbora, km, abiaduraMax, erritmoa, entrenaID) VALUES(?,?,?,?,?,?) ;"
+
         cursor.execute(query, datuak)
         konexioa.commit()
         cursor.close()
@@ -318,7 +318,7 @@ class DBKudeaketa:
     def BueltaDagoenKonprobatu(self, datuak):
         konexioa = self.datuBaseKonexioa()
         cursor = konexioa.cursor()
-        query = "SELECT index FROM Buelta WHERE index = ? ;"
-        cursor.execute(query, [datuak])
+        query = "SELECT izena FROM Buelta WHERE izena = ? AND entrenaID = ? ;"
+        cursor.execute(query, datuak)
         erantzuna = cursor.fetchall()
         return len(erantzuna)

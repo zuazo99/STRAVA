@@ -147,16 +147,18 @@ class Modeloa:
                     print("Buelta index", buelta['lap_index'])
                     print("Buelta izena", buelta['name'])
                     denboraBuelta = str(datetime.timedelta(seconds=buelta['elapsed_time']))
-                    print("Denbora", buelta['elapsed_time'])
-                    print("km", buelta['distance'])
+                    print("Denbora", denboraBuelta)
+                    print("km", buelta['distance']/1000)
                     kilometroak = buelta['distance']/1000
                     print("abiaduraMax", buelta['max_speed'])
                     print("erritmoa", buelta['average_speed'])
                     print("entrenaID", buelta['activity']['id'])
 
-                    bueltaDatuak = (buelta['lap_index'], buelta['name'], denboraBuelta, kilometroak, buelta['max_speed'], buelta['average_speed'], buelta['activity']['id'])
-                    #if DatuBasea.BueltaDagoenKonprobatu(buelta['lap_index']) == 0:
-                    DatuBasea.BueltaSartu(bueltaDatuak)
+                    bueltaDatuak = (buelta['name'], denboraBuelta, kilometroak,
+                                    buelta['max_speed'], buelta['average_speed'], buelta['activity']['id'])
+                    bueltaKonprobatu = (buelta['name'], buelta['activity']['id'])
+                    if DatuBasea.BueltaDagoenKonprobatu(bueltaKonprobatu) == 0:
+                        DatuBasea.BueltaSartu(bueltaDatuak)
 
 
             indizea = indizea + 1
