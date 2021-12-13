@@ -31,9 +31,9 @@ class Modeloa:
             DatuBasea.materialaSartu(atletaInfo['shoes'][0]['name'])
         '''
 
-        #datuakAtleta = (atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'], atletaInfo['shoes'][0]['name'])
+        datuakAtleta = (atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'], atletaInfo['shoes'][0]['name'])
 
-        datuakAtletaUpdate = (atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'], atletaInfo['shoes'][0]['name'], atletaInfo['id'])
+        datuakAtletaUpdate = (atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'], "las naikis", atletaInfo['id'])
         DatuBasea.atletaUpdate(datuakAtletaUpdate)
 
         '''
