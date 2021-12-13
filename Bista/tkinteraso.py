@@ -109,6 +109,7 @@ class pantallitas:
         print(self.id)
         self.entr = self.datuak.entrenamenduaIDLortu(self.id)
 
+
         #habría que replantear una buena parte de la BBDD y el resto del programa... pero habrian sido unos buenos 7 puntitos extra
         #self.polyline = self.entr
         #MapaLortu.Leioa.__init__(self.polyline)
