@@ -18,6 +18,7 @@ class Modeloa:
         print(" ")
         atletaInfo = stravaApiKud.getAthlete()
         print(stravaApiKud.getAthlete()) #Atletaren informazioa lortu. {'id': 61350307, 'firstname' : 'Mikel'....}
+        print(atletaInfo)
         print("ID_Atleta: ", atletaInfo['id'])
         print("Atleta ID_Materiala:", atletaInfo['shoes'][0]['id'])
         print("Materiala izena:", atletaInfo['shoes'][0]['name'])
@@ -132,7 +133,7 @@ class Modeloa:
             '''
                 BUELTAK LORTU
             '''
-
+            '''
             if not aktibitateaID['laps']:
                 print("Aktibitatea ez ditu bueltarik")
             else:
@@ -154,7 +155,7 @@ class Modeloa:
                     bueltaKonprobatu = (buelta['name'], buelta['activity']['id'])
                     if DatuBasea.BueltaDagoenKonprobatu(bueltaKonprobatu) == 0:
                         DatuBasea.BueltaSartu(bueltaDatuak)
-
+            '''
 
             indizea = indizea + 1
             print(" ")

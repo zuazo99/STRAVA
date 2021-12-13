@@ -1,9 +1,9 @@
 import tkinter as tk
 import urllib.parse
 import urllib3
-from PIL import Image, ImageTk
+#from PIL import Image, ImageTk
 import io
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 
 class Leioa():
