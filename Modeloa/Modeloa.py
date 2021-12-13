@@ -50,8 +50,6 @@ class Modeloa:
         print(" ")
         print("3. Get ActivityById: ")
         print(" ")
-        print(stravaApiKud.getActivietesById(em[0]["id"]))
-        print(" ")
         print("4. Get ActivityStreams: ")
         print(" ")
         indizea = 1
@@ -122,7 +120,6 @@ class Modeloa:
             if not aktibitateaID['segment_efforts']:
                 print("Segmentua hutsik dago")
             else:
-
                 print("Segmentua ID:", aktibitateaID['segment_efforts'])
                 print("Segmentua izena:", aktibitateaID['segment_efforts'][0]['name'])
                 denboraSegmentua = str(datetime.timedelta(seconds=aktibitateaID['segment_efforts'][0]['elapsed_time']))
@@ -140,6 +137,26 @@ class Modeloa:
             '''
                 BUELTAK LORTU
             '''
+
+            if not aktibitateaID['laps']:
+                print("Aktibitatea ez ditu bueltarik")
+            else:
+                bueltak = stravaApiKud.getLapsById(aktibitatea["id"])
+                print("Bueltak:", bueltak)
+                for buelta in bueltak:
+                    print("Buelta index", buelta['lap_index'])
+                    print("Buelta izena", buelta['name'])
+                    denboraBuelta = str(datetime.timedelta(seconds=buelta['elapsed_time']))
+                    print("Denbora", buelta['elapsed_time'])
+                    print("km", buelta['distance'])
+                    kilometroak = buelta['distance']/1000
+                    print("abiaduraMax", buelta['max_speed'])
+                    print("erritmoa", buelta['average_speed'])
+                    print("entrenaID", buelta['activity']['id'])
+
+                    bueltaDatuak = (buelta['lap_index'], buelta['name'], denboraBuelta, kilometroak, buelta['max_speed'], buelta['average_speed'], buelta['activity']['id'])
+                    if DatuBasea.BueltaDagoenKonprobatu(buelta['lap_index']) == 0:
+                        DatuBasea.BueltaSartu(bueltaDatuak)
 
             indizea = indizea + 1
             print(" ")

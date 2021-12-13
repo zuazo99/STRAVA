@@ -134,3 +134,23 @@ class StravaAPIKud:
 
         # Dk if good
         return self.http.request('GET', self.host + "/gear/" + str(id), par, goiburuak)
+
+    @tojson
+    def getSegmentById(self, id=None, goiburuak={}):
+        par = {}
+        if id is not None:
+            par['id'] = id
+
+        # Dk if good
+        return self.http.request('GET', self.host + "/segment_efforts/" + str(id) , par, goiburuak)
+
+
+
+    @tojson
+    def getLapsById(self, id=None, goiburuak={}):
+        par = {}
+        if id is not None:
+            par['id'] = id
+
+        # Dk if good
+        return self.http.request('GET', self.host + "/activities/" + str(id) + "/laps", par, goiburuak)
