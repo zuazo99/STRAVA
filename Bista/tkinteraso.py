@@ -69,4 +69,7 @@ class pantallitas:
         #SELECT * FROM entrenamientos WHERE data BETWEEN %noiztik AND %nora
         print(self.noiztik.get())
         print(self.nora.get())
+        datak = (self.noiztik.get(), self.nora.get())
+        self.datuak.entrenamenduaDatenArteanLortu(datak)
 
+pantallitas()

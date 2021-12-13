@@ -169,6 +169,14 @@ class DBKudeaketa:
         erantzuna = cursor.fetchall()
         return len(erantzuna)
 
+    def entrenamenduaDatenArteanLortu(self, datak):
+        konexioa = self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = "SELECT * FROM Entrenamendua WHERE data BETWEEN ? AND ? ;"
+        cursor.execute(query, [datak])
+        erantzuna = cursor.fetchall()
+        return erantzuna
+
     def entrenamenduaUpdate(self, datuak):
         konexioa = self.datuBaseKonexioa()
         cursor = konexioa.cursor()
