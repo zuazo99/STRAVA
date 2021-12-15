@@ -154,3 +154,6 @@ class StravaAPIKud:
 
         # Dk if good
         return self.http.request('GET', self.host + "/activities/" + str(id) + "/laps", par, goiburuak)
+
+#Singleton Patroia
+stravaApiKud = StravaAPIKud()

@@ -1,8 +1,6 @@
-from Kontroladorea.StravaAPI import stravaApiKud
-from Kontroladorea.DBKudeaketa import DBKud
 from Bista import tkinteraso as tk
-from Modeloa import Modeloa
-import datetime
+from Kontroladorea import Modeloa
+
 # kaixo
 
 

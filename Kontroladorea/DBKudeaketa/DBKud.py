@@ -36,6 +36,9 @@ class DBKudeaketa:
             sqliteConnection.close()
             print("SQLite konexioa itzi egin da")
 
+
+
+
     '''
         ------------------------------- MATERIALA KUDEATU -------------------------------
     '''
@@ -340,3 +343,6 @@ class DBKudeaketa:
         cursor.execute(query, datuak)
         erantzuna = cursor.fetchall()
         return len(erantzuna)
+
+#SINGLETON PATRROIA
+dbKudeaketa = DBKudeaketa()
