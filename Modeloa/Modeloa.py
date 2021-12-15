@@ -1,6 +1,7 @@
 from Kontroladorea.StravaAPI import StravaAPIKud
 from Kontroladorea.DBKudeaketa import DBKud
 import datetime
+#Kaixo
 #Para seguir el patron MVC:
 #https://www.giacomodebidda.com/posts/mvc-pattern-in-python-sqlite/
 
