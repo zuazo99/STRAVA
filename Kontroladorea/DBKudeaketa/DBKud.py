@@ -1,26 +1,16 @@
 import sqlite3
 import datetime
-
+from Modeloa import *
 #https://www.sqlitetutorial.net/sqlite-date/
+import Modeloa
+
 
 class DBKudeaketa:
 
     def datuBaseKonexioa(self):
         try:
             sqliteConnection = sqlite3.connect('AktibitateaInfo.db')
-            #cursor = sqliteConnection.cursor()
             print("Konexioa ondo")
-            #hemen sql kontsultak exekutatuko dira
-
-            #Datuak kontsultatu
-            #query = "SELECT ekipamenduMat FROM Erabiltzailea WHERE erabID = "AQUI METEMOS EL ERABILTZAILE @";";
-
-            #El primer imput de data es data1 y el segundo data2
-            #query = "SELECT * FROM Informazioa fecha BETWEEN 'data1' AND 'data2'";
-            #sqlite_select_kontsulta ="select sqlite_version();"
-            #cursor.execute(sqlite_select_kontsulta)
-            #erantzuna = cursor.fetchall()
-            #print(erantzuna)
             return sqliteConnection
 
         except sqlite3.Error as error:
@@ -42,66 +32,15 @@ class DBKudeaketa:
     '''
         ------------------------------- MATERIALA KUDEATU -------------------------------
     '''
+    materiala = Modeloa.Materiala()
+    materiala.materialaDagoenKonprobatu()
+    materiala.materialaSartu()
+    materiala.materialaUpdate()
+    materiala.materialaEzabatu()
+    materiala.materialaK
+    materiala.materialaKontsultatu()
+    materiala.materialKmLortu()
 
-    def materialaDagoenKonprobatu(self, datua):
-        konexioa = self.datuBaseKonexioa()
-        cursor = konexioa.cursor()
-        query = "SELECT materiala FROM Ekipamendua WHERE materiala = ? ;"
-        cursor.execute(query, [datua])
-        erantzuna = cursor.fetchall()
-        return len(erantzuna)
-
-    def materialaSartu(self, datua):
-        konexioa = self.datuBaseKonexioa()
-        cursor = konexioa.cursor()
-        query = "INSERT INTO Ekipamendua(materiala) VALUES(?)"
-        cursor.execute(query, [datua])
-        konexioa.commit()
-        print("Materiala ondo gordeta")
-
-    def materialaUpdate(self, datua):
-        konexioa = self.datuBaseKonexioa()
-        cursor = konexioa.cursor()
-        query = "UPDATE Ekipamendua SET materiala = ?  ;"
-        cursor.execute(query, [datua])
-        konexioa.commit()
-        cursor.close()
-        print("Ondo aldatuta")
-
-
-    def materialaEzabatu(self):
-        konexioa = self.datuBaseKonexioa()
-        cursor = konexioa.cursor()
-        query = "DELETE FROM Ekipamendua WHERE materiala = 'Nike Air Zoom Pegasus 37';"
-        cursor.execute(query)
-        konexioa.commit()
-        print("Ondo ezabatu da")
-
-
-    def materialaKontsultatu(self):
-        konexioa = self.datuBaseKonexioa()
-        cursor = konexioa.cursor()
-        query = "SELECT * FROM Ekipamendua;"
-        cursor.execute(query)
-        ekipamenduIzena = cursor.fetchall()
-        print(ekipamenduIzena)
-        print("+{:-<50}+".format(""))
-        print("|{:^50}|".format("materiala"))
-        print("+{:-<50}+".format(""))
-
-        for materiala, in ekipamenduIzena:
-            print("|{:^50}|".format(materiala))
-
-        print("+{:-<50}+".format(""))
-
-    def materialKmLortu(self):
-
-        konexioa = self.datuBaseKonexioa()
-        cursor = konexioa.cursor()
-        query = "SELECT SUM(KM),erabilitakoMateriala FROM Entrenamendua GROUP BY erabilitakoMateriala ;"
-        cursor.execute(query)
-        erantzuna = cursor.fetchall()
-        return erantzuna
 
 
 
