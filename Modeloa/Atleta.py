@@ -33,3 +33,26 @@ class Atleta:
         konexioa.commit()
         cursor.close()
         print("Ondo aldatuta")
+
+    def atletaKontsultatu(self):
+        konexioa = self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = "SELECT * FROM Erabiltzailea;"
+        cursor.execute(query)
+        erabiltzailea = cursor.fetchall()
+        # https://www.w3schools.com/python/ref_string_format.asp
+        print("+{:-<20}+{:-<20}+{:-<20}+{:-<20}+".format("", "", "",""))
+        print("|{:^20}|{:^20}|{:^20}|{:^20}|".format("erabID", "izena", "abizena", "ekipamenduMat"))
+        print("+{:-<20}+{:-<20}+{:-<20}+{:-<20}+".format("", "", "", ""))
+
+        for erabID, izena, abizena, ekipamenduMat in erabiltzailea:
+            print("|{:^20}|{:^20}|{:^20}|{:^20}|".format(erabID, izena, abizena, ekipamenduMat))
+
+        print("+{:-<20}+{:-<20}+{:-<20}+{:-<20}+".format("", "", "", ""))
+
+
+    def atletaEzabatu(self):
+        konexioa = self.datuBaseKonexioa()
+        cursor = konexioa.cursor()
+        query = ""
+        cursor.execute(query)
