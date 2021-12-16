@@ -57,164 +57,42 @@ class DBKudeaketa:
     '''
         ------------------------------- ENTRENAMENDUA KUDEATU -------------------------------
     '''
+    entrenamendua = Modeloa.Entrenamendua()
+    entrenamendua.EntrenamenduaSartu()
+    entrenamendua.entrenamenduaDagoenKonprobatu()
+    entrenamendua.entrenamenduaUpdate()
+    entrenamendua.entrenamenduaDatenArteanLortu()
 
-    def EntrenamenduaSartu(self, datuak):
-        konexioa=self.datuBaseKonexioa()
-        cursor = konexioa.cursor()
-        query = "INSERT INTO Entrenamendua(ID, mota, data, km, denbora, ordua, entrErabId, erabilitakoMateriala) " \
-                "VALUES(?,?,?,?,?,?,?,?)"
-        cursor.execute(query, datuak)
-        konexioa.commit()
-        cursor.close()
-        print("Ondo gordeta")
 
-    def entrenamenduaDagoenKonprobatu(self, id):
-        konexioa = self.datuBaseKonexioa()
-        cursor = konexioa.cursor()
-        query = "SELECT ID FROM Entrenamendua WHERE ID = ? ;"
-        cursor.execute(query, [id])
-        erantzuna = cursor.fetchall()
-        return len(erantzuna)
-
-    def entrenamenduaDatenArteanLortu(self, datak):
-        konexioa = self.datuBaseKonexioa()
-        cursor = konexioa.cursor()
-        query = "SELECT * FROM Entrenamendua WHERE data BETWEEN ? AND ? ;"
-        cursor.execute(query, datak)
-        erantzuna = cursor.fetchall()
-        return erantzuna
-
-    def entrenamenduaIDLortu(self, id):
-        konexioa = self.datuBaseKonexioa()
-        cursor = konexioa.cursor()
-        self.erantzuna = []
-        query = "SELECT e.* FROM Entrenamendua AS e WHERE e.ID = ? ;"
-        cursor.execute(query, id)
-        self.erantzuna.append(cursor.fetchall())
-        query = "SELECT b.* FROM Entrenamendua AS e, Buelta AS b WHERE b.entreData = e.data, m.entreOrdua = e.ordua AND e.ID = ?;"
-        cursor.execute(query, id)
-        self.erantzuna.append(cursor.fetchall())
-        query = "SELECT m.posizioa, m.AVG(abiadura), m.AV(pultsazioak), m.entreOrdua, m.entreData , idEntrenamendua FROM Medizioak AS m WHERE m.idEntrenamendua = ? ;"
-        cursor.execute(query, id)
-        self.erantzuna.append(cursor.fetchall())
-        query = "SELECT s.* FROM Segmentua AS s WHERE s.idEntrenamendua= ? ;"
-        cursor.execute(query, id)
-        self.erantzuna.append(cursor.fetchall())
-        return erantzuna
-
-    def entrenamenduaUpdate(self, datuak):
-        konexioa = self.datuBaseKonexioa()
-        cursor = konexioa.cursor()
-        query = "UPDATE Entrenamendua SET ID = ?, mota = ?, data = ?, km = ?, denbora = ?, ordua = ?, entrErabId = ?, erabilitakoMateriala = ? WHERE id = ?;"
-        cursor.execute(query, datuak)
-        konexioa.commit()
-        cursor.close()
-        print("Ondo aldatuta")
 
     '''
         ------------------------------- MEDIZIOAK KUDEATU -------------------------------
     '''
-
-    def medizioakSartu(self, datuak):
-        konexioa = self.datuBaseKonexioa()
-        cursor = konexioa.cursor()
-        query = "INSERT INTO Medizioak(posizioa, abiadura, pultsazioak, entreData, entreOrdua, idEntrenamendua) " \
-                "VALUES(?,?,?,?,?,?)"
-        cursor.execute(query, datuak)
-        #cursor.execute(query, [id, izena, abizena])
-        konexioa.commit()
-        cursor.close()
-        print("Ondo gordeta")
-
-    def medizioakDagoenKonprobatu(self, id):
-        konexioa = self.datuBaseKonexioa()
-        cursor = konexioa.cursor()
-        query = "SELECT idEntrenamendua FROM Medizioak WHERE idEntrenamendua = ? ;"
-        cursor.execute(query, [id])
-        erantzuna = cursor.fetchall()
-        return len(erantzuna)
-
-    def medizioakUpdate(self, datuak):
-        konexioa = self.datuBaseKonexioa()
-        cursor = konexioa.cursor()
-        query = "UPDATE Medizioak SET posizioa = ?, abiadura = ?, pultsazioak = ?, entreData = ?, entreOrdua = ?, idEntrenamendua = ? WHERE idEntrenamendua = ? ;"
-        cursor.execute(query, datuak)
-        konexioa.commit()
-        cursor.close()
-        print("Ondo aldatuta")
+    medizioak = Modeloa.Medizioak()
+    medizioak.medizioakSartu()
+    medizioak.medizioakUpdate()
+    medizioak.medizioakDagoenKonprobatu()
 
     '''
         ------------------------------- SEGMENTUAK KUDEATU -------------------------------
     '''
-    def SegmentuakSartu(self, datuak):
-        konexioa=self.datuBaseKonexioa()
-        cursor = konexioa.cursor()
-        query = "INSERT INTO Segmentua(izena, denbora, idEntrenamendua, distantzia) " \
-                "VALUES(?,?,?,?)"
-        cursor.execute(query, datuak)
-        #cursor.execute(query, [id, izena, abizena])
-        konexioa.commit()
-        cursor.close()
-        print("Ondo gordeta")
-
-    def SegmentuakDagoenKonprobatu(self, datuak):
-        konexioa = self.datuBaseKonexioa()
-        cursor = konexioa.cursor()
-        query = "SELECT izena,denbora FROM Segmentua WHERE izena = ? AND denbora = ? ;"
-        cursor.execute(query, datuak)
-        erantzuna = cursor.fetchall()
-        return len(erantzuna)
-
-    def SegmentuakUpdate(self, datuak):
-        konexioa = self.datuBaseKonexioa()
-        cursor = konexioa.cursor()
-        query = "UPDATE Segmentua SET izena = ?, denbora = ?, idEntrenamendua = ?, distantzia = ? WHERE idEntrenamendua = ?,  ;"
-        cursor.execute(query, datuak)
-        konexioa.commit()
-        cursor.close()
-        print("Ondo aldatuta")
-
+    segmentuak = Modeloa.Segmentuak()
+    segmentuak.SegmentuakSartu()
+    segmentuak.SegmentuakUpdate()
+    segmentuak.SegmentuakDagoenKonprobatu()
 
     '''
         ------------------------------- KUDOS KUDEATU -------------------------------
     '''
-    def KudosSartu(self, datuak):
-        konexioa=self.datuBaseKonexioa()
-        cursor = konexioa.cursor()
-        query = "INSERT INTO Kudos(ErabID, EntrenaID) VALUES(?, ?);";
-        cursor.execute(query, datuak)
-        #cursor.execute(query, [id, izena, abizena])
-        konexioa.commit()
-        cursor.close()
-        print("Ondo gordeta")
-
-    def KudosKonprobatu(self, datuak):
-        konexioa = self.datuBaseKonexioa()
-        cursor = konexioa.cursor()
-        query = "SELECT * FROM Kudos;";
-        cursor.execute(query, datuak)
-        erantzuna = cursor.fetchall()
-        return len(erantzuna)
+    kudos = Modeloa.Kudos()
+    kudos.KudosSartu()
+    kudos.KudosKonprobatu()
     '''
         ------------------------------- IRUZKINA KUDEATU -------------------------------
     '''
-    def IruzkinaKudeatu(self, datuak):
-        konexioa=self.datuBaseKonexioa()
-        cursor = konexioa.cursor()
-        query = "INSERT INTO Iruzkina(id, testua) VALUES (?,?)";
-        cursor.execute(query, datuak)
-        #cursor.execute(query, [id, izena, abizena])
-        konexioa.commit()
-        cursor.close()
-        print("Ondo gordeta")
-
-    def IruzkinaKonprobatu(self, datuak):
-        konexioa = self.datuBaseKonexioa()
-        cursor = konexioa.cursor()
-        query = "SELECT * FROM Iruzkina WHERE id = ? AND testua = ?;";
-        cursor.execute(query, datuak)
-        erantzuna = cursor.fetchall()
-        return len(erantzuna)
+    iruzkina = Modeloa.Iruzkina()
+    iruzkina.IruzkinaKudeatu()
+    iruzkina.IruzkinaKonprobatu()
 
     '''
         BUELTAK KUDEATU
