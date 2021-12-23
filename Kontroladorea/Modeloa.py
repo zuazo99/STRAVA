@@ -1,5 +1,6 @@
 from Kontroladorea.StravaAPI import StravaAPIKud
-from Kontroladorea.DBKudeaketa import DBKud
+#from Kontroladorea.DBKudeaketa.DBKud import dbKudeaketa
+from Kontroladorea.StravaAPI.StravaAPIKud import stravaApiKud
 import datetime
 #Kaixo
 #Para seguir el patron MVC:
@@ -7,10 +8,8 @@ import datetime
 
 class Modeloa:
     def main(self):
-
-        DatuBasea = DBKud.DBKudeaketa()
-        stravaApiKud = StravaAPIKud.StravaAPIKud()
-        DatuBasea.datuBaseKonexioa()
+        
+        #dbKudeaketa.datuBaseKonexioa()
 
         #API-ra konektatzeko.
         stravaApiKud.getAccessToTheAPI()
@@ -18,11 +17,18 @@ class Modeloa:
         print("1. Get Athlete: ")
         print(" ")
         atletaInfo = stravaApiKud.getAthlete()
-        print(stravaApiKud.getAthlete()) #Atletaren informazioa lortu. {'id': 61350307, 'firstname' : 'Mikel'....}
+        print(atletaInfo) #Atletaren informazioa lortu. {'id': 61350307, 'firstname' : 'Mikel'....}
+
         print("ID_Atleta: ", atletaInfo['id'])
-        #print("Atleta ID_Materiala:", atletaInfo['shoes'][0]['id'])
-        #print("Materiala izena:", atletaInfo['shoes'][0]['name'])
-        #print("Bizikleta datuak", atletaInfo['bikes'])
+        print("Atleta_Izena: ", atletaInfo['firstname'])
+        print("Atleta_abizena", atletaInfo['lastname'])
+        print("Atleta ID_Materiala:", atletaInfo['shoes'][0]['id'])
+        print("Materiala izena:", atletaInfo['shoes'][0]['name'])
+        print("Bizikleta datuak", atletaInfo['bikes'])
+
+
+        
+
         '''
         if atletaInfo['shoes'][0]['name'] is not None:
             DatuBasea.materialaUpdate(atletaInfo['shoes'][0]['name'])
@@ -30,27 +36,29 @@ class Modeloa:
         
         if DatuBasea.materialaDagoenKonprobatu(atletaInfo['shoes'][0]['name']) == 0:
             DatuBasea.materialaSartu(atletaInfo['shoes'][0]['name'])
-        '''
+        
 
         #datuakAtleta = (atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'], atletaInfo['shoes'][0]['name'])
 
         datuakAtletaUpdate = (atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'], atletaInfo['shoes'][0]['name'], atletaInfo['id'])
-        DatuBasea.atletaUpdate(datuakAtletaUpdate)
+        dbKudeaketa.atletaUpdate(datuakAtletaUpdate)
 
-        '''
+        
         if DatuBasea.atletaDagoenKonprobatu(atletaInfo['id']) == 0:
             DatuBasea.atletaSartu(datuakAtleta)
         DatuBasea.atletaKontsultatu()
         '''
 
+
         print(" ")
         print("2. Get AthleteActivities: ")
         print(" ")
         em = stravaApiKud.getAthleteActivities() #Returns the activities of an athlete. [{"resource_state : 2, "athlete : {"id" : 1234}, "id" : 123456}]
-
+        print(em)
         indizea = 1
         for aktibitatea in em:
             print(str(indizea) + ". Aktibitatea")
+            print(aktibitatea['id'])
             print("IDa: " + str(aktibitatea["id"]))
             print("Mota", aktibitatea['type'])
             dataOrdua = str(aktibitatea['start_date']).split('T')
@@ -79,7 +87,7 @@ class Modeloa:
             print(ekipamenduTot)
             #datos = (aktibitatea["id"], aktibitatea['type'], data, kilometroak, denbora, ordua, atletaInfo['id'], ekipamenduTot)
             datosUpdate = (aktibitatea["id"], aktibitatea['type'], data, kilometroak, denbora, ordua, atletaInfo['id'], ekipamenduTot, aktibitatea["id"])
-            DatuBasea.entrenamenduaUpdate(datosUpdate)
+            dbKudeaketa.entrenamenduaUpdate(datosUpdate)
             '''
                 if DatuBasea.entrenamenduaDagoenKonprobatu(aktibitatea["id"]) == 0:
                     DatuBasea.EntrenamenduaSartu(datos)
@@ -101,7 +109,7 @@ class Modeloa:
 
             #medizioak = (latilng, aktibitatea['average_speed'], aktibitatea['average_heartrate'], data, ordua, aktibitatea["id"])
             medizioakUpdate = (latilng, aktibitatea['average_speed'], aktibitatea['average_heartrate'], data, ordua, aktibitatea["id"], aktibitatea["id"])
-            DatuBasea.medizioakUpdate(medizioakUpdate)
+            dbKudeaketa.medizioakUpdate(medizioakUpdate)
 
             '''
             if DatuBasea.medizioakDagoenKonprobatu(aktibitatea["id"]):
@@ -126,8 +134,8 @@ class Modeloa:
 
                 datosSegmentua = (aktibitateaID['segment_efforts'][0]['name'], denboraSegmentua, aktibitatea["id"], distantziaSegmentua)
                 datosSegmentoKomprobatu = (aktibitateaID['segment_efforts'][0]['name'], denboraSegmentua)
-                if DatuBasea.SegmentuakDagoenKonprobatu(datosSegmentoKomprobatu) == 0:
-                    DatuBasea.SegmentuakSartu(datosSegmentua)
+                if dbKudeaketa.SegmentuakDagoenKonprobatu(datosSegmentoKomprobatu) == 0:
+                    dbKudeaketa.SegmentuakSartu(datosSegmentua)
 
 
             '''
@@ -153,8 +161,8 @@ class Modeloa:
                     bueltaDatuak = (buelta['name'], denboraBuelta, kilometroak,
                                     buelta['max_speed'], buelta['average_speed'], buelta['activity']['id'])
                     bueltaKonprobatu = (buelta['name'], buelta['activity']['id'])
-                    if DatuBasea.BueltaDagoenKonprobatu(bueltaKonprobatu) == 0:
-                        DatuBasea.BueltaSartu(bueltaDatuak)
+                    if dbKudeaketa.BueltaDagoenKonprobatu(bueltaKonprobatu) == 0:
+                        dbKudeaketa.BueltaSartu(bueltaDatuak)
 
 
             indizea = indizea + 1

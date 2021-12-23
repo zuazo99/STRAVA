@@ -1,5 +1,7 @@
 import sqlite3
 import datetime
+
+from Kontroladorea import DBKudeaketa
 from Modeloa import *
 #https://www.sqlitetutorial.net/sqlite-date/
 import Modeloa
@@ -32,7 +34,7 @@ class DBKudeaketa:
     '''
         ------------------------------- MATERIALA KUDEATU -------------------------------
     '''
-    materiala = Modeloa.Materiala()
+    materiala = Materiala
     materiala.materialaDagoenKonprobatu()
     materiala.materialaSartu()
     materiala.materialaUpdate()

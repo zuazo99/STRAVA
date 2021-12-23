@@ -1,14 +1,13 @@
 
-from Kontroladorea.DBKudeaketa.DBKud import dbKudeaketa
 
 
 class Materiala:
-    def __init__(self):
-        self.datuBasea = dbKudeaketa
-
+    def __init__(self, dbKud):
+        print()
+        self.dbKudeaketa = dbKud
 
     def materialaEzabatu(self):
-        konexioa = self.datuBasea.datuBaseKonexioa()
+        konexioa = self.dbKudeaketa.datuBaseKonexioa()
         cursor = konexioa.cursor()
         query = "DELETE FROM Ekipamendua WHERE materiala = 'Nike Air Zoom Pegasus 37';"
         cursor.execute(query)
