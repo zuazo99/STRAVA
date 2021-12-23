@@ -1,5 +1,6 @@
 from Kontroladorea.DBKudeaketa import dbKudeaketa
 from Kontroladorea.StravaAPI import stravaApiKud
+import Modeloa
 import datetime
 #Kaixo
 #Para seguir el patron MVC:
@@ -7,7 +8,8 @@ import datetime
 
 class Modeloa:
     def main(self):
-        
+
+
         #dbKudeaketa.datuBaseKonexioa()
 
         #API-ra konektatzeko.

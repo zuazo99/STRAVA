@@ -5,6 +5,8 @@ import Modeloa.Materiala
 
 
 class DBKud:
+    def __init__(self):
+        self.materiala = Modeloa.Materiala
 
     def datuBaseKonexioa(self):
         try:
@@ -29,13 +31,25 @@ class DBKud:
         ------------------------------- MATERIALA KUDEATU -------------------------------
     '''
 
-    materiala = Modeloa.Materiala
-    materiala.materialaDagoenKonprobatu()
-    materiala.materialaSartu()
-    materiala.materialaUpdate()
-    materiala.materialaEzabatu()
-    materiala.materialaKontsultatu()
-    materiala.materialKmLortu()
+    #materiala = Modeloa.Materiala()
+
+    def materialaDagoenKonprobatu(self, datua):
+        self.materiala.materialaDagoenKonprobatu(datua)
+
+    def materialaSartu(self, datua):
+        self.materiala.materialaSartu(datua)
+
+    def materialaUpdate(self, datua):
+        self.materiala.materialaUpdate(datua)
+
+    def materialaEzabatu(self):
+        self.materiala.materialaEzabatu()
+
+    def materialaKontsultatu(self):
+        self.materiala.materialaKontsultatu()
+
+    def materialaKmLortu(self):
+        self.materiala.materialKmLortu()
 
     '''
         ------------------------------- ATLETA KUDEATU -------------------------------
