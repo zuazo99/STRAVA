@@ -1,13 +1,11 @@
 
-
+from Kontroladorea.DBKudeaketa import dbKudeaketa
 
 class Materiala:
-    def __init__(self, dbKud):
-        print()
-        self.dbKudeaketa = dbKud
+
 
     def materialaEzabatu(self):
-        konexioa = self.dbKudeaketa.datuBaseKonexioa()
+        konexioa = dbKudeaketa.datuBaseKonexioa()
         cursor = konexioa.cursor()
         query = "DELETE FROM Ekipamendua WHERE materiala = 'Nike Air Zoom Pegasus 37';"
         cursor.execute(query)
@@ -15,7 +13,7 @@ class Materiala:
         print("Ondo ezabatu da")
 
     def materialaDagoenKonprobatu(self, datua):
-        konexioa = self.datuBaseKonexioa()
+        konexioa = dbKudeaketa.datuBaseKonexioa()
         cursor = konexioa.cursor()
         query = "SELECT materiala FROM Ekipamendua WHERE materiala = ? ;"
         cursor.execute(query, [datua])
@@ -23,7 +21,7 @@ class Materiala:
         return len(erantzuna)
 
     def materialaSartu(self, datua):
-        konexioa = self.datuBaseKonexioa()
+        konexioa = dbKudeaketa.datuBaseKonexioa()
         cursor = konexioa.cursor()
         query = "INSERT INTO Ekipamendua(materiala) VALUES(?)"
         cursor.execute(query, [datua])
@@ -31,7 +29,7 @@ class Materiala:
         print("Materiala ondo gordeta")
 
     def materialaUpdate(self, datua):
-        konexioa = self.datuBaseKonexioa()
+        konexioa = dbKudeaketa.datuBaseKonexioa()
         cursor = konexioa.cursor()
         query = "UPDATE Ekipamendua SET materiala = ?  ;"
         cursor.execute(query, [datua])
@@ -39,7 +37,7 @@ class Materiala:
         cursor.close()
         print("Ondo aldatuta")
     def materialaKontsultatu(self):
-        konexioa = self.datuBaseKonexioa()
+        konexioa = dbKudeaketa.datuBaseKonexioa()
         cursor = konexioa.cursor()
         query = "SELECT * FROM Ekipamendua;"
         cursor.execute(query)
@@ -56,7 +54,7 @@ class Materiala:
 
     def materialKmLortu(self):
 
-        konexioa = self.datuBaseKonexioa()
+        konexioa = dbKudeaketa.datuBaseKonexioa()
         cursor = konexioa.cursor()
         query = "SELECT SUM(KM),erabilitakoMateriala FROM Entrenamendua GROUP BY erabilitakoMateriala ;"
         cursor.execute(query)

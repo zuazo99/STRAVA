@@ -1,5 +1,5 @@
 
-from Kontroladorea.DBKudeaketa.DBKud import dbKudeaketa
+from Kontroladorea.DBKudeaketa import dbKudeaketa
 
 class Atleta:
     def __init__(self):

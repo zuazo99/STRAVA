@@ -1,13 +1,10 @@
 import sqlite3
-import datetime
 
-from Kontroladorea import DBKudeaketa
-from Modeloa import *
-#https://www.sqlitetutorial.net/sqlite-date/
-import Modeloa
+# https://www.sqlitetutorial.net/sqlite-date/
+import Modeloa.Materiala
 
 
-class DBKudeaketa:
+class DBKud:
 
     def datuBaseKonexioa(self):
         try:
@@ -17,10 +14,10 @@ class DBKudeaketa:
 
         except sqlite3.Error as error:
             print("Errorea konexioa egiten sqlite-rekin")
-        #finally:
-           #if sqliteConnection:
-            #  sqliteConnection.close()
-             #  print("SQLite konexioa itzi egin da")
+        # finally:
+        # if sqliteConnection:
+        #  sqliteConnection.close()
+        #  print("SQLite konexioa itzi egin da")
 
     def datuBaseaKonexioaItxi(self):
         sqliteConnection = self.datuBaseKonexioa()
@@ -28,22 +25,17 @@ class DBKudeaketa:
             sqliteConnection.close()
             print("SQLite konexioa itzi egin da")
 
-
-
-
     '''
         ------------------------------- MATERIALA KUDEATU -------------------------------
     '''
-    materiala = Materiala
+
+    materiala = Modeloa.Materiala
     materiala.materialaDagoenKonprobatu()
     materiala.materialaSartu()
     materiala.materialaUpdate()
     materiala.materialaEzabatu()
     materiala.materialaKontsultatu()
     materiala.materialKmLortu()
-
-
-
 
     '''
         ------------------------------- ATLETA KUDEATU -------------------------------
@@ -64,8 +56,6 @@ class DBKudeaketa:
     entrenamendua.entrenamenduaDagoenKonprobatu()
     entrenamendua.entrenamenduaUpdate()
     entrenamendua.entrenamenduaDatenArteanLortu()
-
-
 
     '''
         ------------------------------- MEDIZIOAK KUDEATU -------------------------------
@@ -104,5 +94,5 @@ class DBKudeaketa:
     buelta.BueltaDagoenKonprobatu()
 
 
-#SINGLETON PATRROIA
-dbKudeaketa = DBKudeaketa()
+# SINGLETON PATRROIA
+dbKudeaketa = DBKud()

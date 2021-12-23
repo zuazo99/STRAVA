@@ -1,6 +1,6 @@
 #from Bista import tkinteraso as tk
+import Modeloa
 from Kontroladorea import Modeloa
-
 # kaixo
 
 

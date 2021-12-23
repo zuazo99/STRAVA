@@ -1,6 +1,5 @@
-from Kontroladorea.StravaAPI import StravaAPIKud
-#from Kontroladorea.DBKudeaketa.DBKud import dbKudeaketa
-from Kontroladorea.StravaAPI.StravaAPIKud import stravaApiKud
+from Kontroladorea.DBKudeaketa import dbKudeaketa
+from Kontroladorea.StravaAPI import stravaApiKud
 import datetime
 #Kaixo
 #Para seguir el patron MVC:
@@ -25,17 +24,18 @@ class Modeloa:
         print("Atleta ID_Materiala:", atletaInfo['shoes'][0]['id'])
         print("Materiala izena:", atletaInfo['shoes'][0]['name'])
         print("Bizikleta datuak", atletaInfo['bikes'])
+        print("Follower kopurua", atletaInfo['follower_count'])
 
 
         
 
-        '''
+
         if atletaInfo['shoes'][0]['name'] is not None:
-            DatuBasea.materialaUpdate(atletaInfo['shoes'][0]['name'])
+            dbKudeaketa.materialaUpdate(atletaInfo['shoes'][0]['name'])
 
         
-        if DatuBasea.materialaDagoenKonprobatu(atletaInfo['shoes'][0]['name']) == 0:
-            DatuBasea.materialaSartu(atletaInfo['shoes'][0]['name'])
+        if dbKudeaketa.materialaDagoenKonprobatu(atletaInfo['shoes'][0]['name']) == 0:
+            dbKudeaketa.materialaSartu(atletaInfo['shoes'][0]['name'])
         
 
         #datuakAtleta = (atletaInfo['id'], atletaInfo['firstname'], atletaInfo['lastname'], atletaInfo['shoes'][0]['name'])
@@ -44,10 +44,10 @@ class Modeloa:
         dbKudeaketa.atletaUpdate(datuakAtletaUpdate)
 
         
-        if DatuBasea.atletaDagoenKonprobatu(atletaInfo['id']) == 0:
-            DatuBasea.atletaSartu(datuakAtleta)
-        DatuBasea.atletaKontsultatu()
-        '''
+        if dbKudeaketa.atletaDagoenKonprobatu(atletaInfo['id']) == 0:
+            dbKudeaketa.atletaSartu(datuakAtleta)
+        dbKudeaketa.atletaKontsultatu()
+
 
 
         print(" ")

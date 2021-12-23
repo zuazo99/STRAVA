@@ -1,4 +1,4 @@
-from Kontroladorea.DBKudeaketa.DBKud import dbKudeaketa
+from Kontroladorea.DBKudeaketa import dbKudeaketa
 
 
 class Kudos:
